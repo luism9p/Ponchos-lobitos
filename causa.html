@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Causa — Lobitos Ponchos</title>
+  <meta name="description" content="Nuestra causa: preservar tradiciones andinas a través de la artesanía textil.">
+
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:wght@300;400;500&family=Manrope:wght@300;400;500&family=Barrio&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+  <!-- ========== HEADER ========== -->
+  <header id="siteHeader" class="site-header">
+    <nav class="site-header__nav">
+
+      <!-- Logo -->
+      <div class="site-header__logo-wrap">
+        <a href="index.html">
+          <img src="https://i.postimg.cc/zB0HwtrS/logo.png" alt="Lobitos Logo" class="site-header__logo">
+        </a>
+      </div>
+
+      <!-- Desktop Menu -->
+      <ul class="site-header__menu">
+
+        <!-- PRODUCTOS (dropdown) -->
+        <li class="nav-item has-dropdown">
+          <a href="collection-lobitos-ponchos.html" class="site-header__link">PRODUCTOS</a>
+          <ul class="dropdown-menu">
+            <li>
+              <span class="dropdown-menu__group-label">Surf Ponchos</span>
+              <ul class="dropdown-menu__sub">
+                <li><a href="collection-lobitos-ponchos.html">Clásicos</a></li>
+                <li><a href="#">Con diseño</a></li>
+                <li><a href="#">Light</a></li>
+                <li><a href="#">Personalizado</a></li>
+              </ul>
+            </li>
+            <li class="dropdown-menu__divider"></li>
+            <li><a href="#">Surf Ponchos Kids</a></li>
+            <li><a href="#">Fundas de tabla</a></li>
+            <li><a href="#">Accesorios</a></li>
+          </ul>
+        </li>
+
+        <!-- NOSOTROS (dropdown) -->
+        <li class="nav-item has-dropdown">
+          <a href="teampage.html" class="site-header__link">NOSOTROS</a>
+          <ul class="dropdown-menu">
+            <li><a href="teampage.html">Equipo</a></li>
+            <li><a href="#">Historia</a></li>
+          </ul>
+        </li>
+
+        <!-- LA CAUSA (enlace directo) -->
+        <li class="nav-item">
+          <a href="causa.html" class="site-header__link">LA CAUSA</a>
+        </li>
+
+        <!-- B2B (enlace directo) -->
+        <li class="nav-item">
+          <a href="b2b.html" class="site-header__link">B2B</a>
+        </li>
+
+      </ul>
+
+      <!-- Spacer -->
+      <div class="site-header__spacer"></div>
+
+    </nav>
+
+    <!-- Mobile bar -->
+    <div class="site-header__mobile-bar">
+      <img src="https://i.postimg.cc/zB0HwtrS/logo.png" alt="Lobitos Logo" class="site-header__mobile-logo">
+      <button class="site-header__mobile-btn" onclick="toggleMenu()" aria-label="Abrir menú">
+        <i data-lucide="menu"></i>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="site-header__mobile-menu">
+      <a href="collection-lobitos-ponchos.html">Productos</a>
+      <a href="teampage.html">Nosotros</a>
+      <a href="causa.html">La Causa</a>
+      <a href="#">B2B</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Banner Principal (Hero) -->
+    <section class="cause-hero-vertical">
+      <div class="cause-hero-vertical__overlay"></div>
+      <h1 class="cause-hero-vertical__title">Nuestra causa</h1>
+    </section>
+
+    <!-- ① CITA INICIAL — Manifiesto -->
+    <section class="cause-intro-quote">
+      <p class="cause-intro-quote__text">
+        No creamos solo ponchos.<br>
+        Creamos conexiones — entre<br>
+        personas, cultura y territorio.
+      </p>
+    </section>
+
+    <!-- ② BLOQUE DE HISTORIA — Grid asimétrico -->
+    <section class="cause-story">
+      <div class="cause-story__grid">
+
+        <!-- Imagen orgánica izquierda -->
+        <div class="cause-story__img-wrap">
+          <img src="https://i.postimg.cc/prGw8QvG/B2B-main-JPG.jpg" alt="Artesano tejiendo un poncho Lobitos"
+            class="cause-story__img">
+        </div>
+
+        <!-- Columna de texto derecha -->
+        <div class="cause-story__text">
+          <span class="cause-story__eyebrow">Nuestra historia</span>
+          <p>
+            Lobitos nace del deseo de preservar tradiciones que están
+            desapareciendo lentamente. Trabajamos directamente con artesanos
+            de comunidades andinas, respetando sus tiempos, procesos y
+            conocimientos ancestrales.
+          </p>
+          <p>
+            Cada pieza es única. No buscamos producción masiva, sino
+            significado. Queremos que cada poncho tenga una historia,
+            una identidad, una conexión real con quien lo usa.
+          </p>
+          <p>
+            Apostamos por una forma de consumo más consciente — donde
+            lo que compras no es solo un objeto, sino un vínculo con
+            las personas que lo crearon.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ③ LOS 3 PILARES — Arcos sobre fondo cálido -->
+    <section class="cause-pillars">
+      <h2 class="cause-pillars__heading">Lo que nos mueve</h2>
+      <div class="cause-pillars__grid">
+
+        <article class="cause-pillar">
+          <div class="cause-pillar__arch-wrap">
+            <img src="https://i.postimg.cc/MKFF9zLd/Enlight374-JPG.jpg" alt="Artesanía andina"
+              class="cause-pillar__img">
+          </div>
+          <h3 class="cause-pillar__title">Artesanía</h3>
+          <p class="cause-pillar__text">
+            Respetamos los procesos tradicionales y el trabajo manual en cada etapa de creación.
+          </p>
+        </article>
+
+        <article class="cause-pillar">
+          <div class="cause-pillar__arch-wrap">
+            <img src="https://i.postimg.cc/65mmMBPH/Enlight376-JPG.jpg" alt="Comunidad artesana"
+              class="cause-pillar__img">
+          </div>
+          <h3 class="cause-pillar__title">Comunidad</h3>
+          <p class="cause-pillar__text">
+            Colaboramos directamente con artesanos, generando relaciones justas y sostenibles.
+          </p>
+        </article>
+
+        <article class="cause-pillar">
+          <div class="cause-pillar__arch-wrap">
+            <img src="https://i.postimg.cc/Hshh6TNc/Enlight375-JPG.jpg" alt="Identidad cultural"
+              class="cause-pillar__img">
+          </div>
+          <h3 class="cause-pillar__title">Identidad</h3>
+          <p class="cause-pillar__text">
+            Cada pieza refleja una historia, una cultura y una forma de ver el mundo.
+          </p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ④ CITA FINAL — Bloque de cierre a ancho completo -->
+    <section class="cause-outro">
+      <blockquote class="cause-outro__quote">
+        Tejer no es solo crear<br>una prenda.<br>
+        <em>Es contar una historia.</em>
+      </blockquote>
+    </section>
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div class="site-footer__grid">
+        <div class="site-footer__brand">
+          <img src="https://i.postimg.cc/zB0HwtrS/logo.png" alt="Lobitos Logo" class="site-footer__brand-logo">
+          <p class="site-footer__brand-text">Ponchos que abrazan tradición. Tejidos que perduran.</p>
+          <div class="site-footer__social">
+            <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+            <a href="#" aria-label="Email"><i data-lucide="mail"></i></a>
+          </div>
+        </div>
+        <div>
+          <div class="site-footer__col-title">Colección</div>
+          <ul class="site-footer__col-list">
+            <li><a href="collection-lobitos-ponchos.html">Ponchos</a></li>
+            <li><a href="#">Kids</a></li>
+            <li><a href="#">Accesorios</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="site-footer__col-title">Nosotros</div>
+          <ul class="site-footer__col-list">
+            <li><a href="teampage.html">Equipo</a></li>
+            <li><a href="causa.html">Causa</a></li>
+            <li><a href="b2b.html">B2B</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="site-footer__bottom">
+        <div>© 2025 Lobitos Ponchos. Hecho en Perú.</div>
+        <div class="site-footer__bottom-links">
+          <a href="#">Privacidad</a>
+          <a href="#">Términos</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('site-header__mobile-menu--open');
+    }
+    lucide.createIcons();
+  </script>
+
+</body>
+
+</html>

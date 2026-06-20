@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOBITOS PONCHOS - Tienda Artesanal Peruana</title>
+    <style>
+        /* --- Reset y Estilos Globales --- */
+        :root {
+            /* Paleta de colores cálida y terrosa */
+            --color-bg-light: #fdfaf5;
+            --color-text: #4a3e35;
+            --color-primary: #8e1f2c;
+            /* Burdeos */
+            --color-accent: #a67c52;
+            /* Terracota */
+            --color-dark: #2a2a2a;
+            --color-white: #ffffff;
+            --color-gray-light: #e5e5e5;
+            --font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--color-bg-light);
+            color: var(--color-text);
+            line-height: 1.6;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* --- Encabezado Promocional --- */
+        .promo-banner {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            text-align: center;
+            padding: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* --- Cabecera del Sitio --- */
+        header {
+            background-color: var(--color-white);
+            padding: 20px 5%;
+            border-bottom: 1px solid var(--color-gray-light);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--color-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--color-text);
+            font-weight: 400;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-primary);
+        }
+
+        /* --- Sección Principal --- */
+        main {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .hero-title {
+            color: var(--color-dark);
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .hero-subtitle {
+            text-align: center;
+            color: var(--color-accent);
+            max-width: 600px;
+            margin: 0 auto 30px;
+            font-weight: 300;
+        }
+
+        /* --- Filtros --- */
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background-color: transparent;
+            border: 1px solid var(--color-accent);
+            border-radius: 50px;
+            color: var(--color-accent);
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        .filter-btn:hover {
+            background-color: var(--color-accent);
+            color: var(--color-white);
+        }
+
+        .filter-btn.active {
+            background-color: var(--color-dark);
+            color: var(--color-white);
+            border-color: var(--color-dark);
+        }
+
+        /* --- Cuadrícula de Productos --- */
+        .product-grid {
+            display: grid;
+            gap: 20px;
+            grid-template-columns: 1fr;
+            /* Móvil por defecto */
+        }
+
+        /* Responsive Grid Queries */
+        @media (min-width: 600px) {
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            /* Tablet */
+        }
+
+        @media (min-width: 1024px) {
+            .product-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            /* Desktop */
+        }
+
+        /* --- Tarjeta de Producto (Card) --- */
+        .product-card {
+            background-color: var(--color-white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--color-gray-light);
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image-container {
+            position: relative;
+            background-color: #f5f0eb;
+            /* Color de poncho suave genérico */
+            padding-bottom: 100%;
+            /* Proporción 1:1 */
+            overflow: hidden;
+        }
+
+        .product-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-tag {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            font-size: 0.7rem;
+            padding: 5px 10px;
+            border-radius: 50px;
+            font-weight: 600;
+        }
+
+        .placeholder-image {
+            width: 50px;
+            height: 50px;
+            opacity: 0.3;
+        }
+
+        .product-info {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .product-name {
+            font-weight: 700;
+            color: var(--color-dark);
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+
+        .product-price {
+            font-weight: 600;
+            color: var(--color-accent);
+            font-size: 1.2rem;
+            margin-top: auto;
+            margin-bottom: 15px;
+        }
+
+        .add-to-cart-btn {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            border: none;
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+
+        .add-to-cart-btn:hover {
+            background-color: #a62a3c;
+        }
+
+        /* Ocultar productos no filtrados */
+        .product-card.hidden {
+            display: none;
+        }
+
+        /* --- Pie de Página de Contacto --- */
+        footer {
+            background-color: #f7f3ed;
+            padding: 40px 5%;
+            margin-top: 60px;
+            text-align: center;
+            border-top: 1px solid var(--color-gray-light);
+        }
+
+        .contact-info {
+            color: var(--color-accent);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .whatsapp-link {
+            display: block;
+            margin-top: 10px;
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 4. Encabezado promocional -->
+    <div class="promo-banner">
+        🎁 20% OFF en tu primer poncho – código: LOBITO
+    </div>
+
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <svg viewBox="0 0 100 100" width="30" height="30" fill="currentColor">
+                    <path
+                        d="M78.6 42.4C77.4 34 71.3 26.5 63 24c-1.2-0.4-2.4-0.6-3.7-0.6H40.7c-1.3 0-2.5 0.2-3.7 0.6-8.3 2.5-14.4 10-15.6 18.4C20.3 53 26.5 63 35.8 66c1 0.3 1.9 0.4 2.9 0.4v26h22.6V66.4c1 0 1.9-0.1 2.9-0.4 9.3-3 15.5-13 14.4-23.6zM27 43.1C28 36.4 33 30.2 39.8 28.2c1-0.3 2.1-0.4 3.1-0.4h14.2c1 0 2.1 0.1 3.1 0.4 6.8 2 11.8 8.1 12.8 14.8C73.9 51.5 68.7 59 61.2 61.3c-0.8 0.2-1.5 0.3-2.3 0.3H41c-0.8 0-1.5-0.1-2.3-0.3C31.3 59 26.1 51.5 27 43.1z" />
+                </svg>
+                LOBITOS PONCHOS
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#">Colección</a></li>
+                    <li><a href="#">Nosotros</a></li>
+                    <li><a href="#">Historias</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Título y subtítulo -->
+        <h1 class="hero-title">LOBITOS PONCHOS</h1>
+        <p class="hero-subtitle">Cada poncho es tejido a mano por artesanos peruanos. Piezas únicas con identidad.</p>
+
+        <!-- 1. Filtros como botones funcionales -->
+        <div class="filters">
+            <button class="filter-btn active" data-filter="todos">
+                <svg viewBox="0 0 16 16">
+                    <path
+                        d="M12.5 13H3.5a.5.5 0 01-.5-.5v-9a.5.5 0 01.5-.5h9a.5.5 0 01.5.5v9a.5.5 0 01-.5.5zM3.5 2C2.122 2 1 3.122 1 4.5v9C1 14.878 2.122 16 3.5 16h9c1.378 0 2.5-1.122 2.5-2.5v-9C15 3.122 13.878 2 12.5 2h-9z">
+                    </path>
+                </svg>
+                Todos
+            </button>
+            <button class="filter-btn" data-filter="clasicos">
+                <svg viewBox="0 0 16 16">
+                    <path
+                        d="M8 1a7 7 0 100 14A7 7 0 008 1zm0 13a6 6 0 110-12 6 6 0 010 12zM8 3a5 5 0 100 10A5 5 0 008 3zm0 9a4 4 0 110-8 4 4 0 010 8z">
+                    </path>
+                </svg>
+                Clásicos
+            </button>
+            <button class="filter-btn" data-filter="con_diseno">
+                <svg viewBox="0 0 16 16">
+                    <path
+                        d="M8.5 0A8.5 8.5 0 110 8.5 8.5 8.5 0 018.5 0zm0 1a7.5 7.5 0 100 15 7.5 7.5 0 000-15zm1.517 7.027l2.846-2.846a1.251 1.251 0 111.77 1.77L11.787 8.8l1.328 1.328a1.251 1.251 0 11-1.77 1.77L9.017 9.54z">
+                    </path>
+                </svg>
+                Con Diseño
+            </button>
+            <button class="filter-btn" data-filter="light">
+                <svg viewBox="0 0 16 16">
+                    <path
+                        d="M8 1a7 7 0 100 14A7 7 0 008 1zm0 13a6 6 0 110-12 6 6 0 010 12zM8 3a5 5 0 100 10A5 5 0 008 3zm0 9a4 4 0 110-8 4 4 0 010 8zM5 5v2a3 3 0 006 0V5H5zM6 6h4v1a2 2 0 11-4 0V6zM8 11.5a.5.5 0 01.5-.5h2a.5.5 0 01.5.5V13H8v-1.5z">
+                    </path>
+                </svg>
+                Light
+            </button>
+            <button class="filter-btn" data-filter="personalizado">
+                <svg viewBox="0 0 16 16">
+                    <path
+                        d="M12.5 1h-9A1.5 1.5 0 002 2.5v11A1.5 1.5 0 003.5 15h9a1.5 1.5 0 001.5-1.5v-11A1.5 1.5 0 0012.5 1zM3 2.5a.5.5 0 01.5-.5h9a.5.5 0 01.5.5v2H3v-2zm10 4v7a.5.5 0 01-.5.5h-9a.5.5 0 01-.5-.5v-7h10z">
+                    </path>
+                </svg>
+                Personalizado
+            </button>
+        </div>
+
+        <!-- 2 & 3. Cuadrícula responsiva de productos -->
+        <div class="product-grid" id="productGrid">
+
+            <!-- Tarjeta Producto 1 (Clásico) -->
+            <div class="product-card" data-category="clasicos">
+                <div class="product-image-container">
+                    <span class="product-tag">Handmade</span>
+                    <div class="product-image">
+                        <!-- Imagen de poncho azul profundo (generada) -->
+                        <img src="https://image_gen.wikimedia.org/prompt:A_high-quality_photo_of_an_artisanal_Peruvian_poncho,_deep_blueberry-blue_wool_with_cream_geometric_and_alpaca_patterns._On_a_rustic_wooden_background._Soft,_textured_wool.jpg"
+                            alt="Poncho Blueberry Chilcano">
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-name">Blueberry Chilcano</h2>
+                    <p class="product-price">S/ 120</p> <!-- Precio aleatorio -->
+                    <button class="add-to-cart-btn">Añadir al carrito</button>
+                </div>
+            </div>
+
+            <!-- Tarjeta Producto 2 (Con Diseño) -->
+            <div class="product-card" data-category="con_diseno">
+                <div class="product-image-container">
+                    <span class="product-tag">Handmade</span>
+                    <div class="product-image">
+                        <!-- Imagen de poncho con rayas pastel (generada) -->
+                        <img src="https://image_gen.wikimedia.org/prompt:A_high-quality_photo_of_an_artisanal_Peruvian_poncho,_pastel-striped_wool_(pink,_blue,_cream)_with_a_colorful_patterned_trim._On_a_sunny_beach_background._Soft_wool.jpg"
+                            alt="Poncho Bubble Ice Cream">
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-name">Bubble Ice Cream</h2>
+                    <p class="product-price">S/ 120</p> <!-- Precio aleatorio -->
+                    <button class="add-to-cart-btn">Añadir al carrito</button>
+                </div>
+            </div>
+
+            <!-- Tarjeta Producto 3 (Light) -->
+            <div class="product-card" data-category="light">
+                <div class="product-image-container">
+                    <span class="product-tag">Handmade</span>
+                    <div class="product-image">
+                        <!-- Imagen de poncho beige suave (generada) -->
+                        <img src="https://image_gen.wikimedia.org/prompt:A_high-quality_photo_of_an_artisanal_Peruvian_poncho,_soft_sand-beige_wool_with_a_subtle_embroidered_alpaca_motif_on_the_chest._On_a_sunny_Andean_courtyard._Thin,_light_wool.jpg"
+                            alt="Poncho Cachaquito">
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-name">Cachaquito</h2>
+                    <p class="product-price">S/ 130</p> <!-- Precio aleatorio -->
+                    <button class="add-to-cart-btn">Añadir al carrito</button>
+                </div>
+            </div>
+
+            <!-- Tarjeta Producto 4 (Personalizado - Con Diseño) -->
+            <div class="product-card" data-category="personalizado con_diseno">
+                <div class="product-image-container">
+                    <span class="product-tag">Handmade</span>
+                    <div class="product-image">
+                        <!-- Imagen de poncho terracota con diseño inca (generada) -->
+                        <img src="https://image_gen.wikimedia.org/prompt:A_high-quality_photo_of_an_artisanal_Peruvian_poncho,_terracotta_wool_with_intricate_Incan_pattern_(waves,_sun_symbols)._On_a_weaver's_workshop._Complex_design.jpg"
+                            alt="Poncho Chicama Yunza">
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-name">Chicama Yunza</h2>
+                    <p class="product-price">S/ 120</p> <!-- Precio aleatorio -->
+                    <button class="add-to-cart-btn">Añadir al carrito</button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- 5. Pie de página inferior -->
+    <footer>
+        <p class="contact-info">Contáctanos para pedidos personalizados:</p>
+        <a href="https://wa.me/51987654321" class="whatsapp-link" target="_blank">
+            WhatsApp: +51 987 654 321
+        </a>
+    </footer>
+
+    <!-- JavaScript para el filtrado funcional -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const productCards = document.querySelectorAll('.product-card');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    // Remover 'active' de todos los botones
+                    filterBtns.forEach(f => f.classList.remove('active'));
+                    // Añadir 'active' al botón clicado
+                    e.currentTarget.classList.add('active');
+
+                    const filter = e.currentTarget.getAttribute('data-filter');
+
+                    productCards.forEach(card => {
+                        const categories = card.getAttribute('data-category').split(' ');
+
+                        if (filter === 'todos' || categories.includes(filter)) {
+                            card.classList.remove('hidden');
+                        } else {
+                            card.classList.add('hidden');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

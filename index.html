@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lobitos Ponchos — Inicio</title>
+  <meta name="description"
+    content="Ponchos artesanales tejidos a mano en Perú. Tradición andina, diseño contemporáneo.">
+
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barrio&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+  <!-- ========== HEADER ========== -->
+  <header id="siteHeader" class="site-header">
+    <nav class="site-header__nav">
+
+      <!-- Logo -->
+      <div class="site-header__logo-wrap">
+        <a href="index.html">
+          <img src="https://i.postimg.cc/zB0HwtrS/logo.png" alt="Lobitos Logo" class="site-header__logo">
+        </a>
+      </div>
+
+      <!-- Desktop Menu -->
+      <ul class="site-header__menu">
+
+        <!-- PRODUCTOS (dropdown) -->
+        <li class="nav-item has-dropdown">
+          <a href="collection-lobitos-ponchos.html" class="site-header__link">PRODUCTOS</a>
+          <ul class="dropdown-menu">
+            <li>
+              <span class="dropdown-menu__group-label">Surf Ponchos</span>
+              <ul class="dropdown-menu__sub">
+                <li><a href="collection-lobitos-ponchos.html">Clásicos</a></li>
+                <li><a href="#">Con diseño</a></li>
+                <li><a href="#">Light</a></li>
+                <li><a href="#">Personalizado</a></li>
+              </ul>
+            </li>
+            <li class="dropdown-menu__divider"></li>
+            <li><a href="#">Surf Ponchos Kids</a></li>
+            <li><a href="#">Fundas de tabla</a></li>
+            <li><a href="#">Accesorios</a></li>
+          </ul>
+        </li>
+
+        <!-- NOSOTROS (dropdown) -->
+        <li class="nav-item has-dropdown">
+          <a href="teampage.html" class="site-header__link">NOSOTROS</a>
+          <ul class="dropdown-menu">
+            <li><a href="teampage.html">Equipo</a></li>
+            <li><a href="#">Historia</a></li>
+          </ul>
+        </li>
+
+        <!-- LA CAUSA (enlace directo) -->
+        <li class="nav-item">
+          <a href="causa.html" class="site-header__link">LA CAUSA</a>
+        </li>
+
+        <!-- B2B (enlace directo) -->
+        <li class="nav-item">
+          <a href="b2b.html" class="site-header__link">B2B</a>
+        </li>
+
+      </ul>
+
+      <!-- Spacer -->
+      <div class="site-header__spacer"></div>
+
+    </nav>
+
+    <!-- Mobile bar -->
+    <div class="site-header__mobile-bar md:hidden">
+      <img src="https://i.postimg.cc/zB0HwtrS/logo.png" alt="Lobitos Logo" class="site-header__mobile-logo">
+      <button class="site-header__mobile-btn" onclick="toggleMenu()" aria-label="Abrir menú">
+        <i data-lucide="menu"></i>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="site-header__mobile-menu">
+      <a href="collection-lobitos-ponchos.html">Productos</a>
+      <a href="teampage.html">Nosotros</a>
+      <a href="causa.html">La Causa</a>
+      <a href="#">B2B</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ========== HERO SLIDER ========== -->
+    <section class="hero">
+      <div class="hero-carousel">
+        <div class="hero-carousel__track">
+          <!-- Slide 1 -->
+          <div class="hero-carousel__slide">
+            <img src="./images/index/carr1.jpeg" alt="Lobitos Ponchos - Slide 1">
+          </div>
+          <!-- Slide 2 -->
+          <div class="hero-carousel__slide">
+            <img src="./images/index/carr2.jpeg" alt="Lobitos Ponchos - Slide 2">
+          </div>
+          <!-- Slide 3 -->
+          <div class="hero-carousel__slide">
+            <img src="./images/index/carr3.jpeg" alt="Lobitos Ponchos - Slide 3">
+          </div>
+        </div>
+        
+        <!-- Controles Inferiores (Dots) -->
+        <div class="hero-carousel__indicators">
+          <button class="hero-carousel__dot active" aria-label="Ir a la primera imagen"></button>
+          <button class="hero-carousel__dot" aria-label="Ir a la segunda imagen"></button>
+          <button class="hero-carousel__dot" aria-label="Ir a la tercera imagen"></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CATEGORIES ========== -->
+    <section class="categories">
+      <div class="categories__grid">
+
+        <a href="collection-lobitos-ponchos.html" class="categories__card fade-up fade-up--delay-1">
+          <div class="categories__card-img categories__card-img--1">
+            <img src="./images/index/ponchos.png" alt="Lobitos Ponchos"
+              style="width: 100%; height: 100%; object-fit: cover; display: block; border-radius: inherit;">
+          </div>
+          <div class="categories__card-footer">
+            <h3 class="categories__card-title" id="cat-1-title">Lobitos Ponchos</h3>
+            <span class="categories__card-arrow"><i data-lucide="arrow-up-right"
+                style="width:18px;height:18px;"></i></span>
+          </div>
+        </a>
+
+        <a href="#" class="categories__card fade-up fade-up--delay-2">
+          <div class="categories__card-img categories__card-img--2">
+            <img src="./images/index/ponchokids.png" alt="Lobitos Ponchos Kids"
+              style="width: 100%; height: 100%; object-fit: cover; display: block; border-radius: inherit;">
+          </div>
+          <div class="categories__card-footer">
+            <h3 class="categories__card-title" id="cat-2-title">Lobitos Ponchos Kids</h3>
+            <span class="categories__card-arrow"><i data-lucide="arrow-up-right"
+                style="width:18px;height:18px;"></i></span>
+          </div>
+        </a>
+
+        <a href="#" class="categories__card fade-up fade-up--delay-2">
+          <div class="categories__card-img categories__card-img--3">
+            <img src="./images/index/fundas.png" alt="Fundas"
+              style="width: 100%; height: 100%; object-fit: cover; display: block; border-radius: inherit;">
+          </div>
+          <div class="categories__card-footer">
+            <h3 class="categories__card-title" id="cat-3-title">Fundas</h3>
+            <span class="categories__card-arrow"><i data-lucide="arrow-up-right"
+                style="width:18px;height:18px;"></i></span>
+          </div>
+        </a>
+
+        <a href="#" class="categories__card fade-up fade-up--delay-3">
+          <div class="categories__card-img categories__card-img--4">
+            <img src="./images/index/Accessories.jpg" alt="Accessories"
+              style="width: 100%; height: 100%; object-fit: cover; display: block; border-radius: inherit;">
+          </div>
+          <div class="categories__card-footer">
+            <h3 class="categories__card-title" id="cat-4-title">Accessories</h3>
+            <span class="categories__card-arrow"><i data-lucide="arrow-up-right"
+                style="width:18px;height:18px;"></i></span>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- ========== BANNER ========== -->
+    <section class="banner">
+      <a href="causa.html" class="banner__wrap">
+        <div class="banner__slot">
+          <h2 class="banner__title">NUESTRA CAUSA</h2>
+        </div>
+      </a>
+    </section>
+
+    <!-- ========== ABOUT ========== -->
+    <section class="about">
+      <div class="about__grid">
+
+        <!-- Columna Visual (grande, a la izquierda) -->
+        <div class="about__img-col fade-up">
+          <!-- Wrapper con clip-path orgánico — ajusta los puntos del polygon para cambiar la ola -->
+          <div class="about__img-mask">
+            <img src="https://i.postimg.cc/prGw8QvG/B2B-main-JPG.jpg" alt="Artesanas de Lobitos Ponchos" id="about-img">
+          </div>
+        </div>
+
+        <!-- Columna Texto (estrecha, flotante sobre la imagen) -->
+        <div class="about__text-col fade-up fade-up--delay-1">
+          <div class="about__eyebrow" id="about-eyebrow">NUESTRA ESENCIA artesanal</div>
+          <h2 class="about__title" id="about-title">Tejido con propósito</h2>
+          <p class="about__text" id="about-text">En Lobitos creamos ponchos que respiran la esencia de los Andes. Cada
+            pieza es tejida por manos que heredan tradiciones ancestrales, usando lanas naturales de la montaña. No es
+            solo abrigo—es conexión con la tierra, con la cultura, con el calor genuino que solo el tejido artesanal
+            puede dar.</p>
+          <a href="teampage.html" class="about__btn" id="about-btn">
+            <span>CONOCE NUESTRA HISTORIA</span>
+            <i data-lucide="arrow-right" style="width:16px;height:16px;"></i>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========== GIF / INSTAGRAM — Portal de Comunidad ========== -->
+    <section class="gif-section" id="gif-section">
+
+      <!-- GIF dominante: enlace que cubre todo el contenedor -->
+      <a href="https://www.instagram.com/lobitos_ponchos/" target="_blank" rel="noopener noreferrer"
+        class="gif-section__backdrop" aria-label="Visita nuestra comunidad en Instagram">
+        <img src="./images/index/videoig.gif" alt="Comunidad Lobitos Ponchos en Instagram" class="gif-section__gif">
+      </a>
+
+      <!-- Panel de texto superpuesto -->
+      <div class="gif-section__overlay fade-up">
+        <p class="gif-section__eyebrow">Comunidad</p>
+        <h2 class="gif-section__title">SÍGUENOS EN<br>NUESTRAS OLAS<br>DE INSTAGRAM</h2>
+        <p class="gif-section__text">Únete a la comunidad de Lobitos Ponchos. Compartimos el proceso artesanal, los
+          mejores swells y las historias de nuestros ponchos en acción.</p>
+        <a href="https://www.instagram.com/lobitos_ponchos/" target="_blank" rel="noopener noreferrer"
+          class="gif-section__btn">
+          <i data-lucide="instagram" style="width:18px;height:18px;"></i>
+          <span>@LOBITOSPONCHOS</span>
+        </a>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div class="site-footer__grid">
+
+        <!-- Brand -->
+        <div class="site-footer__brand">
+          <img src="https://i.postimg.cc/zB0HwtrS/logo.png" alt="Lobitos Logo" class="site-footer__brand-logo">
+          <p class="site-footer__brand-text">Ponchos que abrazan tradición. Tejidos que perduran.</p>
+          <div class="site-footer__social">
+            <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+            <a href="#" aria-label="Email"><i data-lucide="mail"></i></a>
+          </div>
+        </div>
+
+        <!-- Colección -->
+        <div>
+          <div class="site-footer__col-title">Colección</div>
+          <ul class="site-footer__col-list">
+            <li><a href="collection-lobitos-ponchos.html">Ponchos</a></li>
+            <li><a href="#">Kids</a></li>
+            <li><a href="#">Accesorios</a></li>
+          </ul>
+        </div>
+
+        <!-- Nosotros -->
+        <div>
+          <div class="site-footer__col-title">Nosotros</div>
+          <ul class="site-footer__col-list">
+            <li><a href="teampage.html">Equipo</a></li>
+            <li><a href="causa.html">Causa</a></li>
+            <li><a href="#">B2B</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Bottom -->
+      <div class="site-footer__bottom">
+        <div>© 2025 Lobitos Ponchos. Hecho en Perú.</div>
+        <div class="site-footer__bottom-links">
+          <a href="#">Privacidad</a>
+          <a href="#">Términos</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('site-header__mobile-menu--open');
+    }
+
+    lucide.createIcons();
+  </script>
+
+  <script>
+    const header = document.getElementById('siteHeader');
+    const hero = document.querySelector('.hero__slot');
+    let lastScroll = 0;
+
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.scrollY;
+      const heroBottom = hero ? hero.offsetHeight : 0;
+
+      if (currentScroll <= heroBottom) {
+        header.style.transform = 'translateY(0)';
+        lastScroll = currentScroll;
+        return;
+      }
+
+      header.style.transform = currentScroll > lastScroll
+        ? 'translateY(-100%)'
+        : 'translateY(0)';
+
+      lastScroll = currentScroll;
+    });
+  </script>
+
+  <script>
+    // ========== HERO CAROUSEL LOGIC ==========
+    (function() {
+      const track = document.querySelector('.hero-carousel__track');
+      const dots = document.querySelectorAll('.hero-carousel__dot');
+      
+      if (!track || dots.length === 0) return; 
+      
+      const slideCount = dots.length;
+      let currentIndex = 0;
+      let autoplayTimer;
+
+      const goToSlide = (index) => {
+        currentIndex = index;
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        
+        dots.forEach(dot => dot.classList.remove('active'));
+        dots[currentIndex].classList.add('active');
+      };
+
+      const nextSlide = () => {
+        const nextIndex = (currentIndex + 1) % slideCount;
+        goToSlide(nextIndex);
+      };
+
+      const startAutoplay = () => {
+        clearInterval(autoplayTimer); 
+        autoplayTimer = setInterval(nextSlide, 5000); 
+      };
+
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          goToSlide(index);
+          startAutoplay(); 
+        });
+      });
+
+      startAutoplay();
+    })();
+  </script>
+
+</body>
+
+</html>

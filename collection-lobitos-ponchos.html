@@ -1,0 +1,645 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Colección Ponchos — Lobitos</title>
+  <meta name="description"
+    content="Descubre nuestra colección de ponchos artesanales tejidos a mano en los Andes peruanos.">
+
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:wght@300;400;500;600&family=Manrope:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barrio&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+  <!-- ========== HEADER ========== -->
+  <header id="siteHeader" class="site-header">
+    <nav class="site-header__nav">
+
+      <!-- Logo -->
+      <div class="site-header__logo-wrap">
+        <a href="index.html">
+          <img src="https://i.postimg.cc/zB0HwtrS/logo.png" alt="Lobitos Logo" class="site-header__logo">
+        </a>
+      </div>
+
+      <!-- Desktop Menu -->
+      <ul class="site-header__menu">
+
+        <!-- PRODUCTOS (dropdown) -->
+        <li class="nav-item has-dropdown">
+          <a href="collection-lobitos-ponchos.html" class="site-header__link">PRODUCTOS</a>
+          <ul class="dropdown-menu">
+            <li>
+              <span class="dropdown-menu__group-label">Surf Ponchos</span>
+              <ul class="dropdown-menu__sub">
+                <li><a href="collection-lobitos-ponchos.html">Clásicos</a></li>
+                <li><a href="#">Con diseño</a></li>
+                <li><a href="#">Light</a></li>
+                <li><a href="#">Personalizado</a></li>
+              </ul>
+            </li>
+            <li class="dropdown-menu__divider"></li>
+            <li><a href="#">Surf Ponchos Kids</a></li>
+            <li><a href="#">Fundas de tabla</a></li>
+            <li><a href="#">Accesorios</a></li>
+          </ul>
+        </li>
+
+        <!-- NOSOTROS (dropdown) -->
+        <li class="nav-item has-dropdown">
+          <a href="teampage.html" class="site-header__link">NOSOTROS</a>
+          <ul class="dropdown-menu">
+            <li><a href="teampage.html">Equipo</a></li>
+            <li><a href="#">Historia</a></li>
+          </ul>
+        </li>
+
+        <!-- LA CAUSA (enlace directo) -->
+        <li class="nav-item">
+          <a href="causa.html" class="site-header__link">LA CAUSA</a>
+        </li>
+
+        <!-- B2B (enlace directo) -->
+        <li class="nav-item">
+          <a href="#" class="site-header__link">B2B</a>
+        </li>
+
+      </ul>
+
+      <!-- Spacer -->
+      <div class="site-header__spacer"></div>
+
+    </nav>
+
+    <!-- Mobile bar -->
+    <div class="site-header__mobile-bar">
+      <img src="https://i.postimg.cc/zB0HwtrS/logo.png" alt="Lobitos Logo" class="site-header__mobile-logo">
+      <button class="site-header__mobile-btn" onclick="toggleMenu()" aria-label="Abrir menú">
+        <i data-lucide="menu"></i>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="site-header__mobile-menu">
+      <a href="collection-lobitos-ponchos.html">Productos</a>
+      <a href="teampage.html">Nosotros</a>
+      <a href="causa.html">La Causa</a>
+      <a href="#">B2B</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ================================================
+         VIEW 1: COLLECTION GRID (default)
+         ================================================ -->
+    <section id="collectionView">
+
+      <!-- ===== IMMERSIVE COLLECTION HEADER ===== -->
+      <div class="collection-header collection-header--immersive">
+
+        <!-- Capa A: Mural ilustrado de fondo -->
+        <div class="collection-header__mural" aria-hidden="true"></div>
+
+        <!-- Capa B: Ilustraciones SVG decorativas -->
+        <div class="collection-header__deco" aria-hidden="true">
+
+          <!-- Ola estilizada (izquierda) -->
+          <svg class="deco-wave deco-wave--left" viewBox="0 0 320 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M-20 200 C40 160 80 80 160 100 C240 120 280 60 340 80" stroke="#3d8a8a" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+            <path d="M-20 230 C50 180 100 110 190 130 C270 148 310 90 360 100" stroke="#3d8a8a" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.5"/>
+            <ellipse cx="200" cy="115" rx="60" ry="35" fill="#3d8a8a" opacity="0.15" transform="rotate(-10 200 115)"/>
+          </svg>
+
+          <!-- Ola estilizada (derecha) -->
+          <svg class="deco-wave deco-wave--right" viewBox="0 0 320 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M340 200 C280 160 240 80 160 100 C80 120 40 60 -20 80" stroke="#3d8a8a" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+            <path d="M340 230 C270 180 220 110 130 130 C50 148 10 90 -40 100" stroke="#3d8a8a" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.5"/>
+          </svg>
+
+          <!-- Hoja Monstera (esquina superior izquierda) -->
+          <svg class="deco-plant deco-plant--tl" viewBox="0 0 120 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 130 C10 80 30 30 70 10 C90 2 110 15 105 40 C100 60 80 65 75 85 C70 105 80 120 70 130Z" fill="#2d5a3d" opacity="0.75"/>
+            <path d="M40 130 C35 95 50 60 80 45" stroke="#2d5a3d" stroke-width="1.5" fill="none" opacity="0.5"/>
+            <path d="M55 120 C48 90 60 70 85 58" stroke="#2d5a3d" stroke-width="1.2" fill="none" opacity="0.4"/>
+            <path d="M105 40 C95 35 70 50 55 80" stroke="#2d5a3d" stroke-width="1" fill="none" opacity="0.3"/>
+          </svg>
+
+          <!-- Hoja Palma (esquina superior derecha) -->
+          <svg class="deco-plant deco-plant--tr" viewBox="0 0 130 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M120 130 C120 80 100 28 60 8 C40 0 18 14 24 40 C30 62 52 67 57 88 C62 108 52 122 62 130Z" fill="#2d5a3d" opacity="0.75"/>
+            <path d="M90 130 C94 95 80 60 50 43" stroke="#2d5a3d" stroke-width="1.5" fill="none" opacity="0.5"/>
+            <path d="M24 40 C36 34 62 50 76 80" stroke="#2d5a3d" stroke-width="1" fill="none" opacity="0.3"/>
+          </svg>
+
+          <!-- Pelícano (símbolo icónico, derecha media) -->
+          <svg class="deco-pelican" viewBox="0 0 80 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="40" cy="55" rx="18" ry="22" fill="#3d2b1f" opacity="0.7"/>
+            <circle cx="40" cy="26" r="12" fill="#3d2b1f" opacity="0.7"/>
+            <path d="M40 36 L52 46 C62 50 70 45 68 38 C66 31 58 32 52 36Z" fill="#c8553d" opacity="0.8"/>
+            <path d="M52 36 L58 48 C60 54 56 58 52 55Z" fill="#e8846a" opacity="0.7"/>
+            <line x1="36" y1="77" x2="32" y2="88" stroke="#3d2b1f" stroke-width="2.5" stroke-linecap="round" opacity="0.6"/>
+            <line x1="44" y1="77" x2="48" y2="88" stroke="#3d2b1f" stroke-width="2.5" stroke-linecap="round" opacity="0.6"/>
+            <circle cx="35" cy="22" r="2" fill="#f5f2e8"/>
+          </svg>
+
+          <!-- Patrón Moche (esquina inferior izquierda) -->
+          <svg class="deco-moche" viewBox="0 0 90 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0" y="0" width="90" height="40" rx="2" fill="none" stroke="#c8553d" stroke-width="1.2" opacity="0.4"/>
+            <path d="M5 20 L15 8 L25 20 L15 32Z" fill="none" stroke="#c8553d" stroke-width="1.2" opacity="0.5"/>
+            <path d="M30 20 L40 8 L50 20 L40 32Z" fill="none" stroke="#c8553d" stroke-width="1.2" opacity="0.5"/>
+            <path d="M55 20 L65 8 L75 20 L65 32Z" fill="none" stroke="#c8553d" stroke-width="1.2" opacity="0.5"/>
+            <line x1="5" y1="20" x2="85" y2="20" stroke="#c8553d" stroke-width="0.8" opacity="0.3"/>
+          </svg>
+
+        </div>
+
+        <!-- Capa C: Contenido editorial centrado -->
+        <div class="collection-header__content">
+          <span class="collection-header__eyebrow">Colección · Hecho en Perú</span>
+          <h1 class="collection-header__title">Lobitos Ponchos</h1>
+          <p class="collection-header__subtitle">Cada poncho es tejido a mano por artesanos peruanos.<br>Piezas únicas con identidad surfera.</p>
+
+          <!-- Píldoras de navegación rápida — estilo etiquetas de viaje -->
+          <nav class="category-pills" aria-label="Categorías de productos">
+            <a href="collection-lobitos-ponchos.html" class="category-pill active">Ponchos Adultos</a>
+            <a href="#" class="category-pill">Ponchos Kids</a>
+            <a href="#" class="category-pill">Fundas de Tabla</a>
+            <a href="#" class="category-pill">Accesorios</a>
+          </nav>
+        </div>
+
+        <!-- Ola SVG de cierre (borde inferior decorativo) -->
+        <svg class="collection-header__wave-divider" viewBox="0 0 1440 48" fill="none" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M0 0 C240 48 480 48 720 24 C960 0 1200 0 1440 32 L1440 48 L0 48Z" fill="#f5f2e8"/>
+        </svg>
+
+      </div>
+
+      <div class="collection-layout">
+
+        <!-- ===== SIDEBAR DE CATEGORÍAS ===== -->
+        <aside class="collection-sidebar">
+          <h2 class="collection-sidebar__title">Categorías</h2>
+
+          <ul class="collection-sidebar__list">
+            <li class="collection-sidebar__item">
+              <label class="collection-sidebar__label" for="filter-clasicos">
+                <input class="collection-sidebar__checkbox" type="checkbox"
+                  id="filter-clasicos" name="category" value="clasicos">
+                <span class="collection-sidebar__check-box"></span>
+                Clásicos
+              </label>
+            </li>
+            <li class="collection-sidebar__item">
+              <label class="collection-sidebar__label" for="filter-con-diseno">
+                <input class="collection-sidebar__checkbox" type="checkbox"
+                  id="filter-con-diseno" name="category" value="con-diseno">
+                <span class="collection-sidebar__check-box"></span>
+                Con Diseño
+              </label>
+            </li>
+            <li class="collection-sidebar__item">
+              <label class="collection-sidebar__label" for="filter-ligh">
+                <input class="collection-sidebar__checkbox" type="checkbox"
+                  id="filter-ligh" name="category" value="ligh">
+                <span class="collection-sidebar__check-box"></span>
+                Light
+              </label>
+            </li>
+            <li class="collection-sidebar__item">
+              <label class="collection-sidebar__label" for="filter-personalizado">
+                <input class="collection-sidebar__checkbox" type="checkbox"
+                  id="filter-personalizado" name="category" value="personalizado">
+                <span class="collection-sidebar__check-box"></span>
+                Personalizado
+              </label>
+            </li>
+          </ul>
+
+          <button class="collection-sidebar__clear" id="clearFilters" type="button">Limpiar filtros</button>
+        </aside>
+
+        <!-- ===== GRILLA DE PRODUCTOS ===== -->
+        <div class="collection-grid">
+          <div class="collection-grid__inner">
+            <!-- 1 · clasicos -->
+            <a href="#" class="collection-card" data-product="Blueberry Chilcano" data-category="clasicos">
+              <div class="collection-card__img-wrap">
+                <img src="images/lobitos-ponchos/Blueberry Chilcano 1.JPG.jpeg" alt="Blueberry Chilcano"
+                  class="collection-card__img" loading="lazy">
+              </div>
+              <div class="collection-card__footer">
+                <h3 class="collection-card__name">Blueberry Chilcano</h3>
+                <i data-lucide="arrow-up-right" class="collection-card__arrow"></i>
+              </div>
+            </a>
+            <!-- 2 · con-diseno -->
+            <a href="#" class="collection-card" data-product="Bubble Ice Cream" data-category="con-diseno">
+              <div class="collection-card__img-wrap">
+                <img src="images/lobitos-ponchos/Bubble_Ice_Cream_1.jpg" alt="Bubble Ice Cream"
+                  class="collection-card__img" loading="lazy">
+              </div>
+              <div class="collection-card__footer">
+                <h3 class="collection-card__name">Bubble Ice Cream</h3>
+                <i data-lucide="arrow-up-right" class="collection-card__arrow"></i>
+              </div>
+            </a>
+            <!-- 3 · clasicos -->
+            <a href="#" class="collection-card" data-product="Cachaquito" data-category="clasicos">
+              <div class="collection-card__img-wrap">
+                <img src="images/lobitos-ponchos/Cachaquito_1.jpg" alt="Cachaquito" class="collection-card__img"
+                  loading="lazy">
+              </div>
+              <div class="collection-card__footer">
+                <h3 class="collection-card__name">Cachaquito</h3>
+                <i data-lucide="arrow-up-right" class="collection-card__arrow"></i>
+              </div>
+            </a>
+            <!-- 4 · clasicos -->
+            <a href="#" class="collection-card" data-product="Chicama Yunza" data-category="clasicos">
+              <div class="collection-card__img-wrap">
+                <img src="images/lobitos-ponchos/Chicama_Yunza_1.jpg" alt="Chicama Yunza" class="collection-card__img"
+                  loading="lazy">
+              </div>
+              <div class="collection-card__footer">
+                <h3 class="collection-card__name">Chicama Yunza</h3>
+                <i data-lucide="arrow-up-right" class="collection-card__arrow"></i>
+              </div>
+            </a>
+            <!-- 5 · personalizado -->
+            <a href="#" class="collection-card" data-product="Cola de Sirena" data-category="personalizado">
+              <div class="collection-card__img-wrap">
+                <img src="images/lobitos-ponchos/Cola_de_Sirena_1.jpg" alt="Cola de Sirena" class="collection-card__img"
+                  loading="lazy">
+              </div>
+              <div class="collection-card__footer">
+                <h3 class="collection-card__name">Cola de Sirena</h3>
+                <i data-lucide="arrow-up-right" class="collection-card__arrow"></i>
+              </div>
+            </a>
+            <!-- 6 · con-diseno -->
+            <a href="#" class="collection-card" data-product="Dolce Vita" data-category="con-diseno">
+              <div class="collection-card__img-wrap">
+                <img src="images/lobitos-ponchos/Dolce_Vita_1.jpg" alt="Dolce Vita" class="collection-card__img"
+                  loading="lazy">
+              </div>
+              <div class="collection-card__footer">
+                <h3 class="collection-card__name">Dolce Vita</h3>
+                <i data-lucide="arrow-up-right" class="collection-card__arrow"></i>
+              </div>
+            </a>
+            <!-- 7 · con-diseno -->
+            <a href="#" class="collection-card" data-product="Fish Poncho" data-category="con-diseno">
+              <div class="collection-card__img-wrap">
+                <img src="images/lobitos-ponchos/Fisch_Poncho_1.jpg" alt="Fish Poncho" class="collection-card__img"
+                  loading="lazy">
+              </div>
+              <div class="collection-card__footer">
+                <h3 class="collection-card__name">Fish Poncho</h3>
+                <i data-lucide="arrow-up-right" class="collection-card__arrow"></i>
+              </div>
+            </a>
+            <!-- 8 · clasicos -->
+            <a href="#" class="collection-card" data-product="Hybrido Style" data-category="clasicos">
+              <div class="collection-card__img-wrap">
+                <img src="images/lobitos-ponchos/Hybrido_Style_1.jpg" alt="Hybrido Style" class="collection-card__img"
+                  loading="lazy">
+              </div>
+              <div class="collection-card__footer">
+                <h3 class="collection-card__name">Hybrido Style</h3>
+                <i data-lucide="arrow-up-right" class="collection-card__arrow"></i>
+              </div>
+            </a>
+            <!-- 9 · clasicos -->
+            <a href="#" class="collection-card" data-product="La Punta Swag" data-category="clasicos">
+              <div class="collection-card__img-wrap">
+                <img src="images/lobitos-ponchos/La_Punta_Swag_1.jpg" alt="La Punta Swag" class="collection-card__img"
+                  loading="lazy">
+              </div>
+              <div class="collection-card__footer">
+                <h3 class="collection-card__name">La Punta Swag</h3>
+                <i data-lucide="arrow-up-right" class="collection-card__arrow"></i>
+              </div>
+            </a>
+            <!-- 10 · ligh -->
+            <a href="#" class="collection-card" data-product="Light" data-category="ligh">
+              <div class="collection-card__img-wrap">
+                <img src="images/lobitos-ponchos/Light 1.JPG.jpeg" alt="Light" class="collection-card__img"
+                  loading="lazy">
+              </div>
+              <div class="collection-card__footer">
+                <h3 class="collection-card__name">Light</h3>
+                <i data-lucide="arrow-up-right" class="collection-card__arrow"></i>
+              </div>
+            </a>
+            <!-- 11 · clasicos -->
+            <a href="#" class="collection-card" data-product="Lobitos Breeze" data-category="clasicos">
+              <div class="collection-card__img-wrap">
+                <img src="images/lobitos-ponchos/Lobitos Breeze 1.JPG.jpeg" alt="Lobitos Breeze"
+                  class="collection-card__img" loading="lazy">
+              </div>
+              <div class="collection-card__footer">
+                <h3 class="collection-card__name">Lobitos Breeze</h3>
+                <i data-lucide="arrow-up-right" class="collection-card__arrow"></i>
+              </div>
+            </a>
+            <!-- 12 · con-diseno -->
+            <a href="#" class="collection-card" data-product="Me quiere No me quiere" data-category="con-diseno">
+              <div class="collection-card__img-wrap">
+                <img src="images/lobitos-ponchos/Me_quiere_No_me_quiere_1.jpg" alt="Me quiere No me quiere"
+                  class="collection-card__img" loading="lazy">
+              </div>
+              <div class="collection-card__footer">
+                <h3 class="collection-card__name">Me quiere No me quiere</h3>
+                <i data-lucide="arrow-up-right" class="collection-card__arrow"></i>
+              </div>
+            </a>
+            <!-- 13 · con-diseno -->
+            <a href="#" class="collection-card" data-product="Monkey Banana" data-category="con-diseno">
+              <div class="collection-card__img-wrap">
+                <img src="images/lobitos-ponchos/Monkey_Banana_1.jpg" alt="Monkey Banana" class="collection-card__img"
+                  loading="lazy">
+              </div>
+              <div class="collection-card__footer">
+                <h3 class="collection-card__name">Monkey Banana</h3>
+                <i data-lucide="arrow-up-right" class="collection-card__arrow"></i>
+              </div>
+            </a>
+            <!-- 14 · con-diseno -->
+            <a href="#" class="collection-card" data-product="Random man" data-category="con-diseno">
+              <div class="collection-card__img-wrap">
+                <img src="images/lobitos-ponchos/Random_man_1.jpg" alt="Random Man" class="collection-card__img"
+                  loading="lazy">
+              </div>
+              <div class="collection-card__footer">
+                <h3 class="collection-card__name">Random Man</h3>
+                <i data-lucide="arrow-up-right" class="collection-card__arrow"></i>
+              </div>
+            </a>
+            <!-- 15 · clasicos -->
+            <a href="#" class="collection-card" data-product="Skittles" data-category="clasicos">
+              <div class="collection-card__img-wrap">
+                <img src="images/lobitos-ponchos/Skittles 1.jpg.jpeg" alt="Skittles" class="collection-card__img"
+                  loading="lazy">
+              </div>
+              <div class="collection-card__footer">
+                <h3 class="collection-card__name">Skittles</h3>
+                <i data-lucide="arrow-up-right" class="collection-card__arrow"></i>
+              </div>
+            </a>
+            <!-- 16 · clasicos -->
+            <a href="#" class="collection-card" data-product="Ying & Yang" data-category="clasicos">
+              <div class="collection-card__img-wrap">
+                <img src="images/lobitos-ponchos/Ying & Yang 1.JPG.jpeg" alt="Ying & Yang" class="collection-card__img"
+                  loading="lazy">
+              </div>
+              <div class="collection-card__footer">
+                <h3 class="collection-card__name">Ying &amp; Yang</h3>
+                <i data-lucide="arrow-up-right" class="collection-card__arrow"></i>
+              </div>
+            </a>
+          </div>
+        </div><!-- /collection-grid -->
+
+      </div><!-- /collection-layout -->
+
+    </section>
+
+    <!-- ================================================
+         VIEW 2: PRODUCT DETAIL (hidden by default)
+         ================================================ -->
+    <section id="productView" class="product-detail" style="display:none;">
+
+      <!-- Back button -->
+      <div class="product-detail__topbar">
+        <button id="btnBack" class="product-detail__back" type="button">
+          <i data-lucide="arrow-left" style="width:18px;height:18px;"></i>
+          <span>Volver a la colección</span>
+        </button>
+      </div>
+
+      <div class="product__grid">
+
+        <!-- Gallery -->
+        <div class="product-gallery">
+          <div class="product-gallery__main">
+            <img id="detailMainImg" src="" alt="" class="product-gallery__main-img">
+          </div>
+          <div id="detailThumbs" class="product-gallery__thumbs">
+            <!-- JS injects 4 buttons here -->
+          </div>
+        </div>
+
+        <!-- Info -->
+        <div class="product__info">
+          <h2 id="detailTitle" class="product__title"></h2>
+          <p class="product__price">S/ 220</p>
+          <p class="product__description">
+            Este poncho está tejido a mano por artesanos peruanos utilizando lana natural de alta calidad.
+            Diseñado para acompañarte en días fríos y noches cerca del mar.
+          </p>
+
+          <a id="detailWhatsApp" href="#" target="_blank" rel="noopener noreferrer" class="product__cta">
+            <span>Escribir en WhatsApp</span>
+            <i data-lucide="arrow-right"></i>
+          </a>
+
+          <div class="product__details">
+            <p>• Hecho en Perú</p>
+            <p>• 100% lana natural</p>
+            <p>• Producción artesanal</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div class="site-footer__grid">
+        <div class="site-footer__brand">
+          <img src="https://i.postimg.cc/zB0HwtrS/logo.png" alt="Lobitos Logo" class="site-footer__brand-logo">
+          <p class="site-footer__brand-text">Ponchos que abrazan tradición. Tejidos que perduran.</p>
+          <div class="site-footer__social">
+            <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+            <a href="#" aria-label="Email"><i data-lucide="mail"></i></a>
+          </div>
+        </div>
+        <div>
+          <div class="site-footer__col-title">Colección</div>
+          <ul class="site-footer__col-list">
+            <li><a href="collection-lobitos-ponchos.html">Ponchos</a></li>
+            <li><a href="#">Kids</a></li>
+            <li><a href="#">Accesorios</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="site-footer__col-title">Nosotros</div>
+          <ul class="site-footer__col-list">
+            <li><a href="teampage.html">Equipo</a></li>
+            <li><a href="causa.html">Causa</a></li>
+            <li><a href="#">B2B</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="site-footer__bottom">
+        <div>© 2025 Lobitos Ponchos. Hecho en Perú.</div>
+        <div class="site-footer__bottom-links">
+          <a href="#">Privacidad</a>
+          <a href="#">Términos</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('site-header__mobile-menu--open');
+    }
+    lucide.createIcons();
+  </script>
+
+  <!-- ========== FILTRADO POR CATEGORÍAS (independiente del modal) ========== -->
+  <script>
+  (function () {
+    const checkboxes = document.querySelectorAll('.collection-sidebar__checkbox');
+    const allCards   = document.querySelectorAll('.collection-card');
+    const clearBtn   = document.getElementById('clearFilters');
+
+    function applyFilters() {
+      const selected = Array.from(checkboxes)
+        .filter(cb => cb.checked)
+        .map(cb => cb.value);
+
+      allCards.forEach(card => {
+        if (selected.length === 0 || selected.includes(card.dataset.category)) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      // Mostrar / ocultar botón «Limpiar filtros»
+      if (clearBtn) {
+        clearBtn.style.display = selected.length > 0 ? 'block' : 'none';
+      }
+    }
+
+    checkboxes.forEach(cb => cb.addEventListener('change', applyFilters));
+
+    if (clearBtn) {
+      clearBtn.addEventListener('click', () => {
+        checkboxes.forEach(cb => { cb.checked = false; });
+        applyFilters();
+      });
+    }
+
+    // Estado inicial: ocultar botón de limpieza
+    applyFilters();
+  })();
+  </script>
+
+  <!-- ========== PRODUCT CATALOG & SPA LOGIC ========== -->
+  <script>
+  const galleryData = {
+    "Blueberry Chilcano": ["Blueberry Chilcano 1.JPG.jpeg", "Blueberry Chilcano 2.JPG.jpeg", "Blueberry Chilcano 3.JPG.jpeg", "Blueberry Chilcano 4.JPG.jpeg"],
+    "Bubble Ice Cream": ["Bubble_Ice_Cream_1.jpg", "Bubble_Ice_Cream_2.jpg", "Bubble_Ice_Cream_3.jpg", "Bubble Ice Cream 4.jpeg"],
+    "Cachaquito": ["Cachaquito_1.jpg", "Cachaquito_2.jpg", "Cachaquito_3.jpg", "Cachaquito_4.jpg"],
+    "Chicama Yunza": ["Chicama_Yunza_1.jpg", "Chicama_Yunza_2.jpg", "Chicama_Yunza_3.jpg", "Chicama_Yunza_4.jpg"],
+    "Cola de Sirena": ["Cola_de_Sirena_1.jpg", "Cola_de_Sirena_2.jpg", "Cola_de_Sirena_3.jpg", "Cola_de_Sirena_4.jpg"],
+    "Dolce Vita": ["Dolce_Vita_1.jpg", "Dolce_Vita_2.jpg", "Dolce_Vita_3.jpg", "Dolce_Vita_4.jpg"],
+    "Fish Poncho": ["Fisch_Poncho_1.jpg", "Fish_Poncho_2.jpg", "Fish_Poncho_3.jpg", "Fish_Poncho_4.jpg"],
+    "Hybrido Style": ["Hybrido_Style_1.jpg", "Hybrido_Style_2.jpg", "Hybrido_Style_3.jpg", "Hybrido_Style_4_.jpg"],
+    "La Punta Swag": ["La_Punta_Swag_1.jpg", "La_Punta_Swag_2.jpg", "La_Punta_Swag_3.jpg", "La_Punta_Swag_4.jpg"],
+    "Light": ["Light 1.JPG.jpeg", "Light 2.jpeg", "Light_3.jpg", "Light 4.jpeg"],
+    "Lobitos Breeze": ["Lobitos Breeze 1.JPG.jpeg", "Lobitos Breeze 2.JPG.jpeg", "Lobitos Breeze 3.JPG.jpeg", "Lobitos Breeze 4.JPG.jpeg"],
+    "Me quiere No me quiere": ["Me_quiere_No_me_quiere_1.jpg", "Me_quiere_No_me_quiere_2.jpg", "Me_quiere_No_me_quiere_3.jpg", "Me_quiere_No_me_quiere_4.jpg"],
+    "Monkey Banana": ["Monkey_Banana_1.jpg", "Monkey_Banana_2.jpg", "Monkey_Banana_3.jpg", "Monkey_Banana_4.jpg"],
+    "Random man": ["Random_man_1.jpg", "Random_man__2.jpg", "Random_man__3.jpg", "Random_man__4.jpg"],
+    "Skittles": ["Skittles 1.JPG.jpeg", "Skittles 2.JPG.jpeg", "Skittles_3.jpg", "Skittles 4.JPG.jpeg"],
+    "Ying & Yang": ["Ying & Yang 1.JPG.jpeg", "Ying & Yang 2.JPG.jpeg", "Ying & Yang 3.JPG.jpeg", "Ying & Yang 4.JPG.jpeg"]
+  };
+
+  const cards = document.querySelectorAll('.collection-card');
+  const modal = document.getElementById('productView');
+  const gridView = document.getElementById('collectionView');
+  const btnBack = document.getElementById('btnBack');
+  
+  const mainImg = document.getElementById('detailMainImg');
+  const detailTitle = document.getElementById('detailTitle');
+  const thumbsContainer = document.getElementById('detailThumbs');
+
+  cards.forEach(card => {
+    card.addEventListener('click', (e) => {
+      e.preventDefault();
+      const productKey = card.getAttribute('data-product');
+      const images = galleryData[productKey];
+
+      if (images && images.length > 0) {
+        // Mostrar Modal
+        if (gridView) gridView.style.display = 'none';
+        if (modal) modal.style.display = 'block';
+        
+        // Actualizar textos
+        if (detailTitle) detailTitle.textContent = productKey;
+
+        // Cargar Imagen Principal Grande (Imagen 1)
+        if (mainImg) {
+            mainImg.src = `images/lobitos-ponchos/${images[0]}`;
+            mainImg.alt = `Poncho ${productKey}`;
+        }
+
+        // Limpiar miniaturas anteriores
+        if (thumbsContainer) thumbsContainer.innerHTML = '';
+
+        // Generar miniaturas dinámicamente
+        images.forEach((imgSrc, index) => {
+          const btn = document.createElement('button');
+          btn.className = 'product-gallery__thumb';
+          btn.type = 'button';
+          
+          const img = document.createElement('img');
+          img.src = `images/lobitos-ponchos/${imgSrc}`;
+          img.alt = `Miniatura ${index + 1} de ${productKey}`;
+          img.loading = "lazy";
+          
+          btn.appendChild(img);
+          if (thumbsContainer) thumbsContainer.appendChild(btn);
+
+          // Evento para cambiar la foto principal al hacer clic en miniatura
+          btn.addEventListener('click', () => {
+            if (mainImg) mainImg.src = img.src;
+          });
+        });
+        
+        // Subir el scroll al tope
+        window.scrollTo(0, 0);
+      }
+    });
+  });
+
+  // Botón Volver
+  if(btnBack) {
+      btnBack.addEventListener('click', () => {
+        if (modal) modal.style.display = 'none';
+        if (gridView) gridView.style.display = 'block';
+      });
+  }
+  </script>
+
+</body>
+
+</html>

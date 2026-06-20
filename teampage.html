@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Equipo — Lobitos Ponchos</title>
+  <meta name="description"
+    content="Conoce al equipo detrás de Lobitos Ponchos. Personas que creen en la artesanía y las historias.">
+
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:wght@300;400;500&family=Manrope:wght@300;400;500&family=Barrio&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+  <!-- ========== HEADER ========== -->
+  <header id="siteHeader" class="site-header">
+    <nav class="site-header__nav">
+
+      <!-- Logo -->
+      <div class="site-header__logo-wrap">
+        <a href="index.html">
+          <img src="https://i.postimg.cc/zB0HwtrS/logo.png" alt="Lobitos Logo" class="site-header__logo">
+        </a>
+      </div>
+
+      <!-- Desktop Menu -->
+      <ul class="site-header__menu">
+
+        <!-- PRODUCTOS (dropdown) -->
+        <li class="nav-item has-dropdown">
+          <a href="collection-lobitos-ponchos.html" class="site-header__link">PRODUCTOS</a>
+          <ul class="dropdown-menu">
+            <li>
+              <span class="dropdown-menu__group-label">Surf Ponchos</span>
+              <ul class="dropdown-menu__sub">
+                <li><a href="collection-lobitos-ponchos.html">Clásicos</a></li>
+                <li><a href="#">Con diseño</a></li>
+                <li><a href="#">Light</a></li>
+                <li><a href="#">Personalizado</a></li>
+              </ul>
+            </li>
+            <li class="dropdown-menu__divider"></li>
+            <li><a href="#">Surf Ponchos Kids</a></li>
+            <li><a href="#">Fundas de tabla</a></li>
+            <li><a href="#">Accesorios</a></li>
+          </ul>
+        </li>
+
+        <!-- NOSOTROS (dropdown) -->
+        <li class="nav-item has-dropdown">
+          <a href="teampage.html" class="site-header__link">NOSOTROS</a>
+          <ul class="dropdown-menu">
+            <li><a href="teampage.html">Equipo</a></li>
+            <li><a href="#">Historia</a></li>
+          </ul>
+        </li>
+
+        <!-- LA CAUSA (enlace directo) -->
+        <li class="nav-item">
+          <a href="causa.html" class="site-header__link">LA CAUSA</a>
+        </li>
+
+        <!-- B2B (enlace directo) -->
+        <li class="nav-item">
+          <a href="#" class="site-header__link">B2B</a>
+        </li>
+
+      </ul>
+
+      <!-- Spacer -->
+      <div class="site-header__spacer"></div>
+
+    </nav>
+
+    <!-- Mobile bar -->
+    <div class="site-header__mobile-bar">
+      <img src="https://i.postimg.cc/zB0HwtrS/logo.png" alt="Lobitos Logo" class="site-header__mobile-logo">
+      <button class="site-header__mobile-btn" onclick="toggleMenu()" aria-label="Abrir menú">
+        <i data-lucide="menu"></i>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="site-header__mobile-menu">
+      <a href="collection-lobitos-ponchos.html">Productos</a>
+      <a href="teampage.html">Nosotros</a>
+      <a href="causa.html">La Causa</a>
+      <a href="#">B2B</a>
+    </div>
+  </header>
+
+  <main class="team-page">
+
+    <!-- Intro -->
+    <section class="team-intro">
+      <div class="team-intro__inner">
+        <p class="team-intro__eyebrow">El equipo</p>
+        <h1 class="team-intro__title">Las manos<br>detrás de cada pieza</h1>
+        <p class="team-intro__subtitle">
+          Somos un grupo de personas que creen en la artesanía, en el trabajo manual y en las historias que viven dentro
+          de cada pieza.
+        </p>
+      </div>
+    </section>
+
+    <!-- Team members — Sticky Stacking -->
+    <section class="team-list">
+
+      <!-- 1 — Abuela 1 -->
+      <article class="team-member" id="member-1">
+        <div class="team-member__inner">
+          <div class="team-member__img-wrap fade-up">
+            <img src="images/nosotros/equ1.png" alt="Abuela 1 — Fundadora">
+          </div>
+          <div class="team-member__content fade-up fade-up--delay-1">
+            <div class="team-member__text">
+              <p class="team-member__index">01 — Fundadora</p>
+              <h2 class="team-member__name">Abuela 1</h2>
+              <p class="team-member__description">
+                María inició Lobitos con la idea de conectar tradición y diseño contemporáneo. Lleva décadas
+                perfeccionando el arte del tejido andino, transmitiendo técnicas ancestrales a cada nueva generación de
+                artesanas.
+              </p>
+            </div>
+            <div class="team-stats-wrapper">
+              <div class="team-stats-eyebrow">RESULTADOS</div>
+              <div class="team-stats-grid">
+                <div>
+                  <div class="team-stat-number">+40</div>
+                  <div class="team-stat-label">Años tejiendo tradición</div>
+                </div>
+                <div>
+                  <div class="team-stat-number">500+</div>
+                  <div class="team-stat-label">Piezas únicas creadas</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 2 — Abuela 2 -->
+      <article class="team-member" id="member-2">
+        <div class="team-member__inner">
+          <div class="team-member__img-wrap fade-up">
+            <img src="images/nosotros/equ2.png" alt="Abuela 2 — Diseño">
+          </div>
+          <div class="team-member__content fade-up fade-up--delay-1">
+            <div class="team-member__text">
+              <p class="team-member__index">02 — Maestra Artesana</p>
+              <h2 class="team-member__name">Abuela 2</h2>
+              <p class="team-member__description">
+                Especialista en tintes naturales y patrones geométricos, guarda en su memoria un archivo vivo de diseños
+                que ningún libro ha documentado. Su trabajo es el corazón cromático de cada colección.
+              </p>
+            </div>
+            <div class="team-stats-wrapper">
+              <div class="team-stats-eyebrow">RESULTADOS</div>
+              <div class="team-stats-grid">
+                <div>
+                  <div class="team-stat-number">100%</div>
+                  <div class="team-stat-label">Fibras y tintes naturales</div>
+                </div>
+                <div>
+                  <div class="team-stat-number">+80</div>
+                  <div class="team-stat-label">Patrones ancestrales rescatados</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 3 — Tata -->
+      <article class="team-member" id="member-3">
+        <div class="team-member__inner">
+          <div class="team-member__img-wrap fade-up">
+            <img src="images/nosotros/equ3.png" alt="Tata — Producción">
+          </div>
+          <div class="team-member__content fade-up fade-up--delay-1">
+            <div class="team-member__text">
+              <p class="team-member__index">03 — Producción</p>
+              <h2 class="team-member__name">Tata</h2>
+              <p class="team-member__description">
+                Coordinadora incansable entre el taller y la ciudad. Asegura que cada pieza que sale lleve consigo los
+                estándares de calidad que el cliente espera y que la comunidad artesana merece.
+              </p>
+            </div>
+            <div class="team-stats-wrapper">
+              <div class="team-stats-eyebrow">RESULTADOS</div>
+              <div class="team-stats-grid">
+                <div>
+                  <div class="team-stat-number">12</div>
+                  <div class="team-stat-label">Comunidades aliadas</div>
+                </div>
+                <div>
+                  <div class="team-stat-number">98%</div>
+                  <div class="team-stat-label">Tasa de satisfacción</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 4 — Iván -->
+      <article class="team-member" id="member-4">
+        <div class="team-member__inner">
+          <div class="team-member__img-wrap fade-up">
+            <img src="images/nosotros/equ4.jpg" alt="Iván — Marketing">
+          </div>
+          <div class="team-member__content fade-up fade-up--delay-1">
+            <div class="team-member__text">
+              <p class="team-member__index">04 — Marketing &amp; Estrategia</p>
+              <h2 class="team-member__name">Iván</h2>
+              <p class="team-member__description">
+                Cuenta la historia de Lobitos al mundo. Conecta la marca con nuevas audiencias sin perder la autenticidad
+                del origen, construyendo una comunidad que va más allá de la moda.
+              </p>
+            </div>
+            <div class="team-stats-wrapper">
+              <div class="team-stats-eyebrow">RESULTADOS</div>
+              <div class="team-stats-grid">
+                <div>
+                  <div class="team-stat-number">+10K</div>
+                  <div class="team-stat-label">Audiencia alcanzada</div>
+                </div>
+                <div>
+                  <div class="team-stat-number">3×</div>
+                  <div class="team-stat-label">Crecimiento en 2 años</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 5 — Sofía Cruz -->
+      <article class="team-member" id="member-5">
+        <div class="team-member__inner">
+          <div class="team-member__img-wrap fade-up">
+            <img src="images/nosotros/equ5.jpg" alt="Sofía Cruz — Comunicación">
+          </div>
+          <div class="team-member__content fade-up fade-up--delay-1">
+            <div class="team-member__text">
+              <p class="team-member__index">05 — Comunicación &amp; Comunidad</p>
+              <h2 class="team-member__name">Sofía Cruz</h2>
+              <p class="team-member__description">
+                Voz y escucha de la marca. Sofía mantiene vivo el diálogo entre Lobitos y su comunidad, transmitiendo los
+                valores del proyecto con honestidad y calidez.
+              </p>
+            </div>
+            <div class="team-stats-wrapper">
+              <div class="team-stats-eyebrow">RESULTADOS</div>
+              <div class="team-stats-grid">
+                <div>
+                  <div class="team-stat-number">+200</div>
+                  <div class="team-stat-label">Historias publicadas</div>
+                </div>
+                <div>
+                  <div class="team-stat-number">5★</div>
+                  <div class="team-stat-label">Valoración de clientes</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </section>
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div class="site-footer__grid">
+        <div class="site-footer__brand">
+          <img src="https://i.postimg.cc/zB0HwtrS/logo.png" alt="Lobitos Logo" class="site-footer__brand-logo">
+          <p class="site-footer__brand-text">Ponchos que abrazan tradición. Tejidos que perduran.</p>
+          <div class="site-footer__social">
+            <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+            <a href="#" aria-label="Email"><i data-lucide="mail"></i></a>
+          </div>
+        </div>
+        <div>
+          <div class="site-footer__col-title">Colección</div>
+          <ul class="site-footer__col-list">
+            <li><a href="collection-lobitos-ponchos.html">Ponchos</a></li>
+            <li><a href="#">Kids</a></li>
+            <li><a href="#">Accesorios</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="site-footer__col-title">Nosotros</div>
+          <ul class="site-footer__col-list">
+            <li><a href="teampage.html">Equipo</a></li>
+            <li><a href="causa.html">Causa</a></li>
+            <li><a href="#">B2B</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="site-footer__bottom">
+        <div>© 2025 Lobitos Ponchos. Hecho en Perú.</div>
+        <div class="site-footer__bottom-links">
+          <a href="#">Privacidad</a>
+          <a href="#">Términos</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('site-header__mobile-menu--open');
+    }
+    lucide.createIcons();
+
+    /* ---- IntersectionObserver: Reveal .fade-up elements ----
+       Observa todos los elementos con clase fade-up.
+       Cuando cruzan el umbral del viewport añade .is-visible,
+       que dispara la transición CSS (opacidad + translateY + scale).
+       El sticky nunca se toca — solo los hijos internos de .team-member.
+    ---- */
+    (function () {
+      const revealObserver = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              /* Una vez revelado, dejar de observar para no reanimar */
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.12,          /* 12 % visible basta para disparar */
+          rootMargin: '0px 0px -40px 0px'  /* Espera 40 px extra antes del borde inferior */
+        }
+      );
+
+      /* Observar todos los elementos con .fade-up en la página */
+      document.querySelectorAll('.fade-up').forEach(function (el) {
+        revealObserver.observe(el);
+      });
+    })();
+  </script>
+
+</body>
+
+</html>

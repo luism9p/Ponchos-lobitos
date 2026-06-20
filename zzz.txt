@@ -1,0 +1,763 @@
+<!doctype html>
+<html lang="ru" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elegant Website</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&amp;family=Manrope:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barrio&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --surface: #ffffff;
+      --text: #1a1a1a;
+      --accent: #c8553d;
+      --muted: #8a8378;
+    }
+    html, body { height: 100%; }
+    body {
+      font-family: 'Manrope', sans-serif;
+      
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+    }
+    .font-display { font-family: 'Fraunces', serif; font-optical-sizing: auto; }
+    
+    .font-barrio {
+  font-family: 'Barrio', cursive;
+}
+
+    /* Hero image placeholder — 3.16:1 ratio */
+
+}
+    .hero-slot::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        repeating-linear-gradient(45deg, rgba(255,255,255,0.03) 0 2px, transparent 2px 14px);
+      pointer-events: none;
+    }
+
+.banner-slot {
+  position: relative;
+  width: 100%;
+
+  aspect-ratio: 16 / 9;
+  max-height: 70vh;
+
+  background-image: url('https://i.postimg.cc/k5VY0zkQ/Enlight403-JPG.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #fff;
+
+  overflow: hidden;
+}
+
+    /* GIF placeholder — square */
+    .gif-slot {
+      aspect-ratio: 1 / 1;
+      background:
+        conic-gradient(from 45deg at 50% 50%, #c8553d, #d8c9b5, #1a1a1a, #c8553d);
+      position: relative;
+      overflow: hidden;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.6; }
+      50% { transform: scale(1.1); opacity: 0.9; }
+    }
+
+    /* Card image placeholders */
+.card-img {
+  aspect-ratio: 3 / 4;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #f4efe8; /* чтобы поля выглядели аккуратно */
+}
+  
+.card-img-1 {
+  background-image: url('https://i.postimg.cc/MKFF9zLd/Enlight374-JPG.jpg');
+}
+
+.card-img-2 {
+  background-image: url('https://i.postimg.cc/65mmMBPH/Enlight376-JPG.jpg');
+}
+
+.card-img-3 {
+  background-image: url('https://i.postimg.cc/Hshh6TNc/Enlight375-JPG.jpg');
+}
+
+.card-img-4 {
+  background-image: url('https://i.postimg.cc/Hshh6TNc/Enlight375-JPG.jpg');
+}
+    .card:hover .card-img { transform: scale(1.04); }
+    .card:hover .card-arrow { transform: translate(3px, -3px); }
+    .card-arrow { transition: transform 0.4s ease; }
+
+.about-img {
+  aspect-ratio: 4 / 5;
+  position: relative;
+  overflow: hidden;
+
+  background-image: url('https://i.postimg.cc/prGw8QvG/B2B-main-JPG.jpg');
+  background-size: contain;      /* чтобы не обрезалось */
+  background-position: center;
+  background-repeat: no-repeat;
+
+  background-color: #f4efe8;     /* аккуратные поля */
+}
+
+    /* Button hover */
+    .btn-primary {
+      background: var(--text);
+      color: var(--bg);
+      transition: all 0.3s ease;
+    }
+    .btn-primary:hover { background: var(--accent); transform: translateY(-1px); }
+
+    .btn-outline {
+      border: 1px solid var(--text);
+      color: var(--text);
+      transition: all 0.3s ease;
+    }
+    .btn-outline:hover { background: var(--text); color: var(--bg); }
+
+    /* Placeholder chip */
+    .placeholder-chip {
+      background: rgba(0,0,0,0.35);
+      backdrop-filter: blur(8px);
+      color: #fff;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-link {
+      position: relative;
+      transition: color 0.3s;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: -4px;
+      width: 0;
+      height: 1px;
+      background: currentColor;
+      transition: width 0.3s;
+    }
+    .nav-link:hover::after { width: 100%; }
+
+    .banner-wrap { transition: transform 0.5s ease; cursor: pointer; }
+    .banner-wrap:hover { transform: translateY(-4px); }
+    .banner-wrap:hover .banner-arrow { transform: translateX(6px); }
+    .banner-arrow { transition: transform 0.4s ease; }
+
+    /* Fade-in on load */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+
+    /* Mobile-first responsive adjustments */
+    @media (max-width: 640px) {
+      .hero-slot, .banner-slot {
+        aspect-ratio: 2 / 1;
+      }
+      .card-img {
+        aspect-ratio: 2.5 / 3;
+      }
+      .about-img {
+        aspect-ratio: 3 / 4;
+      }
+      .gif-slot {
+        aspect-ratio: 1 / 1;
+        max-height: 280px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .placeholder-chip {
+        font-size: 10px;
+        padding: 5px 10px;
+      }
+    }
+
+    /* Touch-friendly buttons on mobile */
+    @media (max-width: 640px) {
+      button, a[class*="btn"] {
+        min-height: 44px;
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+      }
+    }
+
+    /* Prevent overflow on small screens */
+    @media (max-width: 640px) {
+      nav {
+        padding: 1rem 1.5rem !important;
+      }
+      section {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+      }
+    }
+    
+    /* ===== DROPDOWN MENU ===== */
+
+.dropdown {
+  position: absolute;
+  top: 140%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: #000;
+  color: #fff;
+  padding: 18px 22px;
+  border-radius: 12px;
+  min-width: 180px;
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition: all 0.25s ease;
+}
+
+.dropdown a {
+  display: block;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  padding: 6px 0;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.dropdown a:hover {
+  opacity: 1;
+}
+
+.group:hover .dropdown {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.nav-link-strong {
+  position: relative;
+  padding-bottom: 4px;
+  transition: opacity 0.2s;
+}
+
+.nav-link-strong:hover {
+  opacity: 0.7;
+}
+
+.banner-slot {
+  position: relative;
+
+  width: 100%;
+  height: calc(100vh - 88px);
+
+  background-image: url('https://i.postimg.cc/k5VY0zkQ/Enlight403-JPG.jpg');
+  background-size: cover;
+  background-position: center;
+}
+.hero-slot {
+  position: relative;
+  width: 100%;
+  height: 70vh; /* фиксированная логика */
+  min-height: 320px; /* чтобы не был слишком маленький */
+  max-height: 700px; /* чтобы не раздувался на больших экранах */
+  overflow: hidden;
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+ background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.hero-slide.active {
+  opacity: 1;
+}
+}
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full w-full">
+  <div class="app-wrapper w-full h-full overflow-auto">
+      <!-- HEADER -->
+   <header id="siteHeader" class="w-full bg-black text-white sticky top-0 left-0 z-50 transition-transform duration-300">
+  <nav class="max-w-7xl mx-auto px-6 md:px-10 py-5 flex items-center justify-between">
+
+  <!-- LEFT LOGO -->
+  <div class="w-1/3 flex items-center">
+    <a href="#">
+      <img 
+        src="https://i.postimg.cc/zB0HwtrS/logo.png" 
+        alt="Lobitos Logo" 
+        class="h-[52px] md:h-[62px] w-auto object-contain"
+      >
+    </a>
+  </div>
+
+  <!-- CENTER MENU -->
+  <div class="hidden md:flex items-center justify-center gap-10 w-1/3 text-[16px] tracking-[0.18em] uppercase font-medium font-barrio">
+
+  <div class="relative group">
+    <a href="#" class="nav-link-strong">Colección</a>
+    <div class="dropdown">
+      <a href="#">Ponchos</a>
+      <a href="#">Kids</a>
+      <a href="#">Accesorios</a>
+    </div>
+  </div>
+
+  <div class="relative group">
+    <a href="#" class="nav-link-strong">Nosotros</a>
+    <div class="dropdown">
+      <a href="#">Historia</a>
+      <a href="#">Materiales</a>
+      <a href="#">Artesanos</a>
+    </div>
+  </div>
+
+  <div class="relative group">
+    <a href="#" class="nav-link-strong">Historias</a>
+    <div class="dropdown">
+      <a href="#">Blog</a>
+      <a href="#">Inspiración</a>
+    </div>
+  </div>
+
+  <div class="relative group">
+    <a href="#" class="nav-link-strong">Contacto</a>
+    <div class="dropdown">
+      <a href="#">Email</a>
+      <a href="#">Instagram</a>
+    </div>
+  </div>
+
+</div>
+
+  <!-- RIGHT EMPTY (для баланса) -->
+  <div class="w-1/3"></div>
+
+</nav>
+
+  <!-- MOBILE -->
+  <div class="md:hidden px-6 pb-4 flex items-center justify-between">
+    <img 
+      src="https://i.postimg.cc/zB0HwtrS/logo.png" 
+      class="h-10"
+    >
+    <button onclick="toggleMenu()" class="text-white">
+      <i data-lucide="menu"></i>
+    </button>
+  </div>
+
+  <!-- MOBILE MENU -->
+  <div id="mobileMenu" class="hidden bg-black text-white px-6 pb-6 flex flex-col gap-4 text-sm tracking-wide font-barrio">
+    <a href="#">Colección</a>
+    <a href="#">Nosotros</a>
+    <a href="#">Historias</a>
+    <a href="#">Contacto</a>
+  </div>
+</header>
+  <main3><!-- HERO -->
+   <section class="w-full mt-[30px] mb-0">
+  <div class="hero-slot">
+  <div class="hero-slide active" style="background-image:url('https://i.postimg.cc/cCH5xbm9/123.jpg')"></div>
+  <div class="hero-slide" style="background-image:url('https://i.postimg.cc/23Rs0QSQ/Enlight390-JPG.jpg')"></div>
+  <div class="hero-slide" style="background-image:url('https://i.postimg.cc/ydCQMgQs/3-JPG.jpg')"></div>
+</div>
+</section><!-- CATEGORIES -->
+    <section class="w-full px-6 md:px-10 pt-2 pb-10 md:pt-4 md:pb-14">
+     <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"><!-- Card 1 --> <a href="#" class="card group block fade-up delay-1">
+        <div class="card-img card-img-1 rounded-xl">
+         <div class="absolute top-4 left-4 placeholder-chip"><i data-lucide="image" style="width:11px;height:11px;"></i> 01
+         </div>
+        </div>
+        <div class="flex items-start justify-between mt-5">
+         <div>
+          <h3 class="font-display text-xl md:text-2xl font-medium" id="cat-1-title">Керамика</h3>
+         </div>
+         <div class="card-arrow mt-1"><i data-lucide="arrow-up-right" style="width:18px;height:18px;"></i>
+         </div>
+        </div></a> <!-- Card 2 --> <a href="#" class="card group block fade-up delay-2">
+        <div class="card-img card-img-2 rounded-xl">
+         <div class="absolute top-4 left-4 placeholder-chip"><i data-lucide="image" style="width:11px;height:11px;"></i> 02
+         </div>
+        </div>
+        <div class="flex items-start justify-between mt-5">
+         <div>
+          <h3 class="font-display text-xl md:text-2xl font-medium" id="cat-2-title">Текстиль</h3>
+         </div>
+         <div class="card-arrow mt-1"><i data-lucide="arrow-up-right" style="width:18px;height:18px;"></i>
+         </div>
+        </div></a> <!-- Card 3 --> <a href="#" class="card group block fade-up delay-2">
+        <div class="card-img card-img-3 rounded-xl">
+         <div class="absolute top-4 left-4 placeholder-chip"><i data-lucide="image" style="width:11px;height:11px;"></i> 03
+         </div>
+        </div>
+        <div class="flex items-start justify-between mt-5">
+         <div>
+          <h3 class="font-display text-xl md:text-2xl font-medium" id="cat-3-title">Освещение</h3>
+         </div>
+         <div class="card-arrow mt-1"><i data-lucide="arrow-up-right" style="width:18px;height:18px;"></i>
+         </div>
+        </div></a> <!-- Card 4 --> <a href="#" class="card group block fade-up delay-3">
+        <div class="card-img card-img-4 rounded-xl">
+         <div class="absolute top-4 left-4 placeholder-chip"><i data-lucide="image" style="width:11px;height:11px;"></i> 04
+         </div>
+        </div>
+        <div class="flex items-start justify-between mt-5">
+         <div>
+          <h3 class="font-display text-xl md:text-2xl font-medium" id="cat-4-title">Декор</h3>
+         </div>
+         <div class="card-arrow mt-1"><i data-lucide="arrow-up-right" style="width:18px;height:18px;"></i>
+         </div>
+        </div></a>
+      </div>
+     </div>
+    </section><!-- BANNER -->
+   <section class="w-full my-10 md:my-14">
+  <a href="#" class="banner-wrap block">
+    <div class="banner-slot"></div>
+  </a>
+</section><!-- ABOUT (text + image) -->
+    <section class="w-full px-6 md:px-10 pb-20 md:pb-28">
+     <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 items-center">
+      <div class="fade-up">
+       <div class="text-xs tracking-[0.2em] uppercase text-[color:var(--muted)] mb-4" id="about-eyebrow">
+        — Наша история
+       </div>
+       <h2 class="font-display text-4xl md:text-5xl lg:text-6xl font-light leading-[1.02] tracking-tight mb-6" id="about-title">Искусство в каждой детали</h2>
+       <p class="text-base md:text-lg text-[color:var(--text)]/75 leading-relaxed mb-8 max-w-xl" id="about-text">Мы создаём предметы, которые остаются с вами на годы. Каждая вещь — результат работы мастеров, выбранных материалов и внимания к мелочам, которые делают дом настоящим.</p><button class="btn-outline px-8 py-3 rounded-full text-sm font-medium inline-flex items-center gap-2" id="about-btn"> <span>Познакомиться ближе</span> <i data-lucide="arrow-right" style="width:16px;height:16px;"></i> </button>      </div>
+      <div class="fade-up delay-1">
+       <div class="about-img rounded-2xl">
+        <div class="absolute top-4 left-4 placeholder-chip"><i data-lucide="image" style="width:11px;height:11px;"></i> Фото · 4:5
+        </div>
+       </div>
+      </div>
+     </div>
+    </section><!-- GIF SECTION -->
+    <section class="w-full px-6 md:px-10 pb-20 md:pb-28">
+     <div class="max-w-xl mx-auto fade-up">
+    <div class="gif-slot rounded-2xl overflow-hidden">
+  
+  <video 
+    autoplay 
+    muted 
+    loop 
+    playsinline
+    class="w-full h-full object-contain"
+  >
+    <source src="https://i.imgur.com/E6rfIVC.mp4" type="video/mp4">
+  </video>
+
+</div>
+      <p class="text-center text-sm text-[color:var(--muted)] mt-6 tracking-wide" id="gif-caption">— В движении рождается форма —</p>
+     </div>
+    </section>
+   </main><!-- FOOTER -->
+   <footer class="w-full border-t border-black/10 bg-[color:var(--bg)]">
+    <div class="max-w-7xl mx-auto px-6 md:px-10 py-16 md:py-20">
+     <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+      <div class="md:col-span-2">
+       <div class="font-display text-3xl font-medium mb-4">
+        Lobitos Poncho
+       </div>
+       <p class="text-sm text-[color:var(--muted)] max-w-sm leading-relaxed" id="footer-tagline">Создаём предметы, которые превращают дом в место, куда хочется возвращаться.</p>
+       <div class="flex gap-3 mt-6"><a href="#" class="w-10 h-10 rounded-full border border-black/15 flex items-center justify-center hover:bg-black hover:text-[color:var(--bg)] hover:border-black transition"> <i data-lucide="instagram" style="width:16px;height:16px;"></i> </a> <a href="#" class="w-10 h-10 rounded-full border border-black/15 flex items-center justify-center hover:bg-black hover:text-[color:var(--bg)] hover:border-black transition"> <i data-lucide="twitter" style="width:16px;height:16px;"></i> </a> <a href="#" class="w-10 h-10 rounded-full border border-black/15 flex items-center justify-center hover:bg-black hover:text-[color:var(--bg)] hover:border-black transition"> <i data-lucide="youtube" style="width:16px;height:16px;"></i> </a>
+       </div>
+      </div>
+      <div>
+       <div class="text-xs tracking-[0.15em] uppercase text-[color:var(--muted)] mb-4">
+        Магазин
+       </div>
+       <ul class="space-y-2 text-sm">
+        <li><a href="#" class="nav-link">Новинки</a></li>
+        <li><a href="#" class="nav-link">Бестселлеры</a></li>
+        <li><a href="#" class="nav-link">Коллекции</a></li>
+        <li><a href="#" class="nav-link">Подарки</a></li>
+       </ul>
+      </div>
+      <div>
+       <div class="text-xs tracking-[0.15em] uppercase text-[color:var(--muted)] mb-4">
+        Компания
+       </div>
+       <ul class="space-y-2 text-sm">
+        <li><a href="#" class="nav-link">О нас</a></li>
+        <li><a href="#" class="nav-link">Журнал</a></li>
+        <li><a href="#" class="nav-link">Контакты</a></li>
+        <li><a href="#" class="nav-link">Доставка</a></li>
+       </ul>
+      </div>
+     </div>
+     <div class="border-t border-black/10 pt-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 text-xs text-[color:var(--muted)]">
+      <div id="footer-copyright">
+       © 2025 Lobitos Poncho.
+      </div>
+      <div class="flex gap-6"><a href="#" class="hover:text-black transition">Политика конфиденциальности</a> <a href="#" class="hover:text-black transition">Условия использования</a>
+      </div>
+     </div>
+    </div>
+   </footer>
+  </div>
+  <script>
+    const defaultConfig = {
+      nav_item_1: 'Colección',
+      nav_item_2: 'Nosotros',
+      logo_text: 'Lobitos',
+      nav_item_3: 'Historias',
+      nav_item_4: 'Contacto',
+      hero_btn_1: 'Explorar ponchos',
+      hero_btn_2: 'Descubre la historia',
+      categories_title: 'Nuestros tejidos',
+      cat_1_title: 'Lobitos Ponchos',
+      cat_1_sub: 'descipcion',
+      cat_2_title: 'Lobitos Ponchos Kids',
+      cat_2_sub: 'descripcion',
+      cat_3_title: 'Fundas',
+      cat_3_sub: 'descripcion',
+      cat_4_title: 'Accessories',
+      cat_4_sub: 'description',
+      banner_title: 'Calor de montaña, tradición andina',
+      banner_sub: 'Cada poncho teje la historia de manos que honran la artesanía ancestral',
+      about_eyebrow: '— Desde Perú',
+      about_title: 'Tejido con propósito',
+      about_text: 'En Lobitos creamos ponchos que respiran la esencia de los Andes. Cada pieza es tejida por manos que heredan tradiciones ancestrales, usando lanas naturales de la montaña. No es solo abrigo—es conexión con la tierra, con la cultura, con el calor genuino que solo el tejido artesanal puede dar.',
+      about_btn: 'Conoce nuestros maestros',
+      gif_caption: '— El viento que teje historias —',
+      footer_tagline: 'Ponchos que abrazan tradición. Tejidos que perduran.',
+      footer_copyright: '© 2025 Lobitos Ponchos. Hecho en Perú.',
+      bg_color: '#ffffff',
+      surface_color: '#ffffff',
+      text_color: '#1a1a1a',
+      accent_color: '#c8553d',
+      muted_color: '#8a8378',
+      font_family: 'Manrope',
+      font_size: 16
+    };
+
+    onConfigChange(defaultConfig);
+
+    function setText(id, value) {
+      const el = document.getElementById(id);
+      if (el) el.textContent = value;
+    }
+
+    function onConfigChange(config) {
+      const c = { ...defaultConfig, ...config };
+
+      // Navigation
+      setText('nav-1', c.nav_item_1);
+      setText('nav-2', c.nav_item_2);
+      setText('logo', c.logo_text);
+      setText('nav-3', c.nav_item_3);
+      setText('nav-4', c.nav_item_4);
+
+      // Hero buttons (keep arrow icon in btn-1)
+      const btn1 = document.getElementById('hero-btn-1');
+      if (btn1) btn1.querySelector('span').textContent = c.hero_btn_1;
+      setText('hero-btn-2', c.hero_btn_2);
+
+      // Categories
+      setText('cat-title', c.categories_title);
+      setText('cat-1-title', c.cat_1_title);
+      setText('cat-1-sub', c.cat_1_sub);
+      setText('cat-2-title', c.cat_2_title);
+      setText('cat-2-sub', c.cat_2_sub);
+      setText('cat-3-title', c.cat_3_title);
+      setText('cat-3-sub', c.cat_3_sub);
+      setText('cat-4-title', c.cat_4_title);
+      setText('cat-4-sub', c.cat_4_sub);
+
+      // Banner
+      setText('banner-title', c.banner_title);
+      setText('banner-sub', c.banner_sub);
+
+      // About
+      setText('about-eyebrow', c.about_eyebrow);
+      setText('about-title', c.about_title);
+      setText('about-text', c.about_text);
+      const aboutBtn = document.getElementById('about-btn');
+      if (aboutBtn) aboutBtn.querySelector('span').textContent = c.about_btn;
+
+      // GIF
+      setText('gif-caption', c.gif_caption);
+
+      // Footer
+      setText('footer-tagline', c.footer_tagline);
+      setText('footer-copyright', c.footer_copyright);
+
+      // Colors
+      const root = document.documentElement;
+      root.style.setProperty('--bg', c.bg_color);
+      root.style.setProperty('--surface', c.surface_color);
+      root.style.setProperty('--text', c.text_color);
+      root.style.setProperty('--accent', c.accent_color);
+      root.style.setProperty('--muted', c.muted_color);
+
+      // Fonts
+      const fontStack = `'${c.font_family}', 'Manrope', sans-serif`;
+      document.body.style.fontFamily = fontStack;
+
+      const baseSize = c.font_size || 16;
+      document.body.style.fontSize = `${baseSize}px`;
+    }
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities: (config) => ({
+          recolorables: [
+            {
+              get: () => config.bg_color || defaultConfig.bg_color,
+              set: (v) => { config.bg_color = v; window.elementSdk.setConfig({ bg_color: v }); }
+            },
+            {
+              get: () => config.surface_color || defaultConfig.surface_color,
+              set: (v) => { config.surface_color = v; window.elementSdk.setConfig({ surface_color: v }); }
+            },
+            {
+              get: () => config.text_color || defaultConfig.text_color,
+              set: (v) => { config.text_color = v; window.elementSdk.setConfig({ text_color: v }); }
+            },
+            {
+              get: () => config.accent_color || defaultConfig.accent_color,
+              set: (v) => { config.accent_color = v; window.elementSdk.setConfig({ accent_color: v }); }
+            },
+            {
+              get: () => config.muted_color || defaultConfig.muted_color,
+              set: (v) => { config.muted_color = v; window.elementSdk.setConfig({ muted_color: v }); }
+            }
+          ],
+          borderables: [],
+          fontEditable: {
+            get: () => config.font_family || defaultConfig.font_family,
+            set: (v) => { config.font_family = v; window.elementSdk.setConfig({ font_family: v }); }
+          },
+          fontSizeable: {
+            get: () => config.font_size || defaultConfig.font_size,
+            set: (v) => { config.font_size = v; window.elementSdk.setConfig({ font_size: v }); }
+          }
+        }),
+        mapToEditPanelValues: (config) => {
+          const c = { ...defaultConfig, ...config };
+          return new Map([
+            ['nav_item_1', c.nav_item_1],
+            ['nav_item_2', c.nav_item_2],
+            ['logo_text', c.logo_text],
+            ['nav_item_3', c.nav_item_3],
+            ['nav_item_4', c.nav_item_4],
+            ['hero_btn_1', c.hero_btn_1],
+            ['hero_btn_2', c.hero_btn_2],
+            ['categories_title', c.categories_title],
+            ['cat_1_title', c.cat_1_title],
+            ['cat_1_sub', c.cat_1_sub],
+            ['cat_2_title', c.cat_2_title],
+            ['cat_2_sub', c.cat_2_sub],
+            ['cat_3_title', c.cat_3_title],
+            ['cat_3_sub', c.cat_3_sub],
+            ['cat_4_title', c.cat_4_title],
+            ['cat_4_sub', c.cat_4_sub],
+            ['banner_title', c.banner_title],
+            ['banner_sub', c.banner_sub],
+            ['about_eyebrow', c.about_eyebrow],
+            ['about_title', c.about_title],
+            ['about_text', c.about_text],
+            ['about_btn', c.about_btn],
+            ['gif_caption', c.gif_caption],
+            ['footer_tagline', c.footer_tagline],
+            ['footer_copyright', c.footer_copyright]
+          ]);
+        }
+      });
+    }
+
+    lucide.createIcons();
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9f17a44d96c9e79c',t:'MTc3NzA2MDI3Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+ 
+ <script>
+
+const header = document.getElementById('siteHeader');
+const scrollContainer = document.querySelector('.app-wrapper');
+const hero = document.querySelector('.hero-slot');
+
+let lastScroll = 0;
+
+scrollContainer.addEventListener('scroll', () => {
+  const currentScroll = scrollContainer.scrollTop;
+  const heroBottom = hero.offsetHeight;
+
+  const isAfterHero = currentScroll > heroBottom;
+
+  if (!isAfterHero) {
+    header.style.transform = 'translateY(0)';
+    lastScroll = currentScroll;
+    return;
+  }
+
+  if (currentScroll > lastScroll) {
+    // вниз → скрываем
+    header.style.transform = 'translateY(-100%)';
+  } else {
+    // вверх → показываем
+    header.style.transform = 'translateY(0)';
+  }
+
+  lastScroll = currentScroll;
+});
+</script>
+<script>
+const slides = document.querySelectorAll('.hero-slide');
+let current = 0;
+
+function showSlide(index) {
+  slides.forEach((slide, i) => {
+    slide.classList.toggle('active', i === index);
+  });
+}
+
+function nextSlide() {
+  current = (current + 1) % slides.length;
+  showSlide(current);
+}
+
+setInterval(nextSlide, 2000);
+</script></body>
+</html>
