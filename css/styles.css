@@ -678,7 +678,15 @@ h6,
    ============================================ */
 .categories {
   width: 100%;
-  padding: 0.5rem 1.5rem 2.5rem;
+  padding: 2rem 1.5rem 3rem;
+
+  /* Fondo Mesh Gradient — cálido y moderno */
+  background-color: hsla(204, 0%, 100%, 1) !important;
+  background-image:
+    radial-gradient(circle at 0% 0%,   hsla(19,  86%, 53%, 0.35) 3.12%, transparent 40%),
+    radial-gradient(circle at 100% 0%, hsla(23,  77%, 74%, 0.35) 3%,    transparent 40%),
+    radial-gradient(circle at 50% 0%,  hsla(236, 77%, 74%, 0.24) 4%,    transparent 40%) !important;
+  background-blend-mode: normal, normal, normal !important;
 }
 
 .categories__grid {
@@ -687,6 +695,7 @@ h6,
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
+  background-color: transparent !important; /* Deja pasar el mesh gradient del padre */
 }
 
 .categories__card {
@@ -3105,4 +3114,122 @@ h6,
 .gif-section__btn:hover {
   background-color: var(--accent);
   transform: translateY(-2px);
+}
+
+
+/* ========================================= */
+/* 🔥 CORRECCIONES MÓVILES DEFINITIVAS 🔥    */
+/* ========================================= */
+@media (max-width: 768px) {
+
+  /* 1. Categorías 2x2 con Overlay Correcto */
+  .categories__card {
+    position: relative !important;
+    height: 140px !important;
+    overflow: hidden !important;
+  }
+
+  /* Convertimos SOLO el footer (el texto) en la capa oscura superpuesta */
+  .categories__card-footer {
+    position: absolute !important;
+    inset: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background-color: rgba(0, 0, 0, 0.4) !important;
+    z-index: 10 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    height: 100% !important;
+  }
+
+  /* Estilo del texto flotando sobre la foto */
+  .categories__card-title {
+    color: #ffffff !important;
+    font-size: 1.15rem !important;
+    text-align: center !important;
+    margin: 0 !important;
+    letter-spacing: 1px !important;
+  }
+
+  /* Ocultamos la flechita en móvil para un look minimalista */
+  .categories__card-arrow {
+    display: none !important;
+  }
+
+  /* 4. Ajuste Tipográfico del Banner "Nuestra Causa" */
+  .cause-hero-vertical {
+    min-height: 55vh !important;
+  }
+
+  .cause-hero-vertical__title {
+    font-size: 2rem !important;
+    line-height: 1.3 !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    padding: 0 1.25rem !important;
+  }
+
+  .cause-intro-quote__text {
+    font-size: 1.2rem !important;
+    line-height: 1.4 !important;
+    padding: 0 1.5rem !important;
+  }
+
+  /* 1. Rescate del título gigante Nuestra Causa */
+  h2.banner__title {
+      font-size: 2.5rem !important;
+      line-height: 1.1 !important;
+      word-break: break-word !important;
+      padding: 0 1rem !important;
+      text-align: center !important;
+  }
+
+  /* 2. Reset absoluto y apilamiento para "Tejido con Propósito" */
+  .about {
+      display: flex !important;
+      flex-direction: column !important;
+      height: auto !important;
+      padding: 3rem 1rem !important;
+  }
+
+  .about__text {
+      position: relative !important; /* Mata el absolute de PC */
+      width: 100% !important;        /* Mata el 50% de PC */
+      right: auto !important;
+      top: auto !important;
+      transform: none !important;
+      padding: 2rem 1rem 0 1rem !important;
+      margin: 0 !important;
+  }
+
+  .about__img-container {
+      position: relative !important;
+      width: 100% !important;
+      right: auto !important;
+  }
+
+  /* 3. Reset absoluto y apilamiento para "Síguenos en nuestras olas" */
+  .gif-section {
+      display: flex !important;
+      flex-direction: column !important;
+      height: auto !important;
+      padding: 3rem 1rem !important;
+  }
+
+  .gif-section__text {
+      position: relative !important; /* Mata el absolute de PC */
+      width: 100% !important;        /* Mata el 45% de PC */
+      left: auto !important;
+      top: auto !important;
+      transform: none !important;
+      padding: 2rem 1rem 0 1rem !important;
+      margin: 0 !important;
+  }
+
+  .gif-section__img {
+      position: relative !important;
+      width: 100% !important;
+      right: auto !important;
+  }
 }
