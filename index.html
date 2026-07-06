@@ -85,8 +85,10 @@
     <!-- Mobile bar -->
     <div class="site-header__mobile-bar md:hidden">
       <img src="https://i.postimg.cc/zB0HwtrS/logo.png" alt="Lobitos Logo" class="site-header__mobile-logo">
-      <button class="site-header__mobile-btn" onclick="toggleMenu()" aria-label="Abrir menú">
-        <i data-lucide="menu"></i>
+      <button class="site-header__mobile-btn menu-toggle" onclick="toggleMenu()" aria-label="Abrir menú">
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
     </div>
 
@@ -299,6 +301,7 @@
   <script>
     function toggleMenu() {
       document.getElementById('mobileMenu').classList.toggle('site-header__mobile-menu--open');
+      document.querySelector('.site-header__mobile-btn').classList.toggle('active');
     }
 
     lucide.createIcons();
@@ -333,38 +336,49 @@
       const track = document.querySelector('.hero-carousel__track');
       const dots = document.querySelectorAll('.hero-carousel__dot');
       
-      if (!track || dots.length === 0) return; 
+      if (!track) return; 
       
-      const slideCount = dots.length;
-      let currentIndex = 0;
-      let autoplayTimer;
+      let dotIndex = 0;
+      let isTransitioning = false;
 
-      const goToSlide = (index) => {
-        currentIndex = index;
-        track.style.transform = `translateX(-${currentIndex * 100}%)`;
-        
+      const updateDots = () => {
+        if (!dots.length) return;
         dots.forEach(dot => dot.classList.remove('active'));
-        dots[currentIndex].classList.add('active');
+        dots[dotIndex].classList.add('active');
       };
 
       const nextSlide = () => {
-        const nextIndex = (currentIndex + 1) % slideCount;
-        goToSlide(nextIndex);
+        if (isTransitioning) return;
+        isTransitioning = true;
+        
+        track.style.transition = 'transform 0.8s ease-in-out';
+        track.style.transform = 'translateX(-100%)';
+        
+        dotIndex = (dotIndex + 1) % (dots.length || 1);
+        updateDots();
       };
 
-      const startAutoplay = () => {
-        clearInterval(autoplayTimer); 
-        autoplayTimer = setInterval(nextSlide, 5000); 
-      };
-
-      dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-          goToSlide(index);
-          startAutoplay(); 
-        });
+      track.addEventListener('transitionend', (e) => {
+        // Evitar que otros eventos transitionend afecten
+        if (e.target !== track) return;
+        
+        isTransitioning = false;
+        
+        // 1. Desactiva momentáneamente la animación
+        track.style.transition = 'none';
+        
+        // 2. Toma el primer hijo y muévelo al final
+        track.appendChild(track.firstElementChild);
+        
+        // 3. Reinicia el track instantáneamente a 0
+        track.style.transform = 'translateX(0)';
+        
+        // 4. Fuerza un reflow del navegador
+        void track.offsetWidth;
       });
 
-      startAutoplay();
+      // Intervalo automático de 4500ms
+      setInterval(nextSlide, 4500);
     })();
   </script>
 
