@@ -1,0 +1,955 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personalizado — Lobitos Ponchos</title>
+  <meta name="description"
+    content="Diseña tu propio Surf Poncho: elige el color de la capucha, la parte de arriba, la parte de abajo y el bolsillo.">
+
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:wght@300;400;500&family=Manrope:wght@300;400;500&family=Barrio&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- ========== ESTILOS DEL PERSONALIZADOR (scoped a .perso-page) ========== -->
+  <style>
+    .perso-page {
+      --ink: #000000;
+      --paper: #ffffff;
+      --muted: #595959;
+      /* gris con contraste AA garantizado (~6.7:1) sobre blanco, en vez de negro+opacity */
+      background: var(--paper);
+      color: var(--ink);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .perso-page .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .perso-page a {
+      color: var(--ink);
+      text-decoration: underline;
+    }
+
+    .perso-page a:hover {
+      opacity: .7;
+    }
+
+    .perso-page .page {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 30px 20px 60px;
+    }
+
+    .perso-page .masthead {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 26px;
+    }
+
+    .perso-page .brand {
+      font-family: 'Barrio', system-ui, cursive;
+      font-size: 16px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+
+    .perso-page h1 {
+      font-family: 'Barrio', system-ui, cursive;
+      font-weight: 400;
+      font-size: clamp(42px, 7vw, 84px);
+      line-height: .98;
+      margin: 4px 0 10px;
+      color: var(--ink);
+    }
+
+    .perso-page .sub {
+      margin: 0;
+      font-size: 15.5px;
+      color: var(--muted);
+      max-width: 46ch;
+      line-height: 1.5;
+    }
+
+    .perso-page .layout {
+      display: flex;
+      gap: 30px;
+      align-items: flex-start;
+    }
+
+    .perso-page .col-preview {
+      flex: 0 0 58%;
+    }
+
+    .perso-page .col-controls {
+      flex: 0 0 calc(42% - 30px);
+    }
+
+    .perso-page .stage {
+      background: #fff;
+      border: 2px solid var(--ink);
+      border-radius: 22px;
+      padding: 22px;
+    }
+
+    /* Contenedor principal del poncho */
+    .perso-page .poncho {
+      position: relative;
+      width: 100%;
+      max-width: 600px;
+      aspect-ratio: 1/1;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .perso-page .poncho canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .perso-page .stage-cap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      margin-top: 12px;
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: .05em;
+    }
+
+    .perso-page .stage-cap .live {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #000;
+    }
+
+    .perso-page .panel {
+      background: #fff;
+      border: 2px solid var(--ink);
+      border-radius: 22px;
+      padding: 26px 24px;
+    }
+
+    /* ---------- Pestañas por zona ---------- */
+    .perso-page .tabs {
+      display: flex;
+      border-bottom: 2px solid var(--ink);
+      margin-bottom: 18px;
+    }
+
+    .perso-page .tab {
+      flex: 1 1 0;
+      min-width: 0;
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+      padding: 6px 4px 10px;
+      cursor: pointer;
+      font-family: inherit;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .perso-page .tab-label {
+      font-size: 11.5px;
+      font-weight: 800;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+      color: var(--ink);
+      line-height: 1.25;
+      opacity: .55;
+    }
+
+    .perso-page .tab-current {
+      font-size: 10.5px;
+      font-weight: 500;
+      color: var(--muted);
+      line-height: 1.2;
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .perso-page .tab:hover .tab-label {
+      opacity: .8;
+    }
+
+    .perso-page .tab[aria-selected="true"] {
+      border-bottom-color: var(--ink);
+    }
+
+    .perso-page .tab[aria-selected="true"] .tab-label {
+      opacity: 1;
+    }
+
+    .perso-page .tab:focus-visible {
+      outline: 2px dashed var(--ink);
+      outline-offset: 2px;
+    }
+
+    .perso-page .tabpanel {
+      margin-bottom: 4px;
+    }
+
+    .perso-page .swatches {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px;
+    }
+
+    .perso-page .swatch {
+      width: 100%;
+      min-width: 28px;
+      aspect-ratio: 1/1;
+      padding: 0;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 2px solid rgba(0, 0, 0, .18);
+      outline: none;
+      transition: transform .12s ease;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    /* Colores muy claros (beige hueso, gris, beige arena): borde propio para no perderse sobre blanco */
+    .perso-page .swatch--light {
+      border-color: #c7c7c7;
+    }
+
+    .perso-page .swatch:hover {
+      transform: scale(1.1);
+    }
+
+    /* Selección confirmada: el anillo es un `border` real (no box-shadow) para que se
+       renderice IDÉNTICO en las 4 zonas sin importar el color de fondo del swatch —
+       el box-shadow es solo el halo blanco que lo separa del swatch/fondo. */
+    .perso-page .swatch.active {
+      border: 3px solid var(--ink);
+      box-shadow: 0 0 0 2px #fff;
+    }
+
+    /* Foco de teclado: indicador propio, distinto del anillo de selección */
+    .perso-page .swatch:focus-visible {
+      outline: 2px dashed var(--ink);
+      outline-offset: 3px;
+    }
+
+    /* Botón real: el texto se mantiene chico/discreto, pero el área clickeable
+       llega a 44x44px (padding, no font-size) y luce como parte del sistema
+       negro/blanco — no como un link genérico de navegador. */
+    .perso-page .toggle-colors {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      margin-top: 6px;
+      margin-left: -14px;
+      padding: 10px 14px;
+      background: none;
+      border: 1.5px solid var(--ink);
+      border-radius: 999px;
+      font-size: 12.5px;
+      font-weight: 700;
+      letter-spacing: .02em;
+      color: var(--ink);
+      cursor: pointer;
+      font-family: inherit;
+      transition: background .15s ease, color .15s ease;
+    }
+
+    .perso-page .toggle-colors:hover {
+      background: var(--ink);
+      color: #fff;
+    }
+
+    .perso-page .toggle-colors:focus-visible {
+      outline: 2px dashed var(--ink);
+      outline-offset: 3px;
+    }
+
+    .perso-page .divider {
+      height: 2px;
+      background: var(--ink);
+      margin: 4px 0 18px;
+    }
+
+    .perso-page .summary {
+      border: 1.5px solid var(--ink);
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin-bottom: 18px;
+    }
+
+    .perso-page .summary .k {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: #000;
+      margin-bottom: 6px;
+    }
+
+    .perso-page .summary p {
+      margin: 0;
+      font-size: 14.5px;
+      line-height: 1.55;
+      color: #000;
+    }
+
+    .perso-page .cta {
+      width: 100%;
+      border: 2px solid var(--ink);
+      cursor: pointer;
+      background: var(--ink);
+      color: #fff;
+      font-family: 'Barrio', system-ui, cursive;
+      font-weight: 400;
+      font-size: 22px;
+      letter-spacing: .02em;
+      padding: 13px 15px;
+      border-radius: 14px;
+      transition: background .18s ease, color .18s ease, transform .12s ease;
+    }
+
+    .perso-page .cta:hover {
+      background: #fff;
+      color: var(--ink);
+      transform: translateY(-1px);
+    }
+
+    .perso-page .cta.added {
+      background: #fff;
+      color: var(--ink);
+    }
+
+    .perso-page .price {
+      text-align: center;
+      margin: 12px 0 0;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    @media (max-width:920px) {
+      .perso-page .layout {
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .perso-page .col-preview {
+        flex: none;
+        width: 100%;
+        position: sticky;
+        top: var(--nav-height, 0);
+        z-index: 30;
+        background: var(--paper);
+        padding-bottom: 10px;
+      }
+
+      .perso-page .col-controls {
+        flex: none;
+        width: 100%;
+      }
+
+      .perso-page .poncho {
+        max-width: 300px;
+      }
+
+      .perso-page .stage {
+        padding: 14px;
+      }
+    }
+
+    /* Móvil (~320-428px): 5 columnas — los círculos quedan muy por encima del
+       mínimo táctil de 28px incluso en el iPhone SE más angosto (320px). */
+    @media (max-width:600px) {
+      .perso-page .swatches {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 6px;
+      }
+
+      .perso-page h1 {
+        font-size: clamp(34px, 11vw, 48px);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ========== HEADER ========== -->
+  <header id="siteHeader" class="site-header">
+    <nav class="site-header__nav">
+
+      <!-- Logo -->
+      <div class="site-header__logo-wrap">
+        <a href="index.html">
+          <img src="https://i.postimg.cc/zB0HwtrS/logo.png" alt="Lobitos Logo" class="site-header__logo">
+        </a>
+      </div>
+
+      <!-- Desktop Menu -->
+      <ul class="site-header__menu">
+
+        <!-- PRODUCTOS (dropdown) -->
+        <li class="nav-item has-dropdown">
+          <a href="collection-lobitos-ponchos.html" class="site-header__link">PRODUCTOS</a>
+          <ul class="dropdown-menu">
+            <li>
+              <span class="dropdown-menu__group-label">Surf Ponchos</span>
+              <ul class="dropdown-menu__sub">
+                <li><a href="collection-lobitos-ponchos.html">Clásicos</a></li>
+                <li><a href="#">Con diseño</a></li>
+                <li><a href="#">Light</a></li>
+                <li><a href="personalizado.html">Personalizado</a></li>
+              </ul>
+            </li>
+            <li class="dropdown-menu__divider"></li>
+            <li><a href="#">Surf Ponchos Kids</a></li>
+            <li><a href="#">Fundas de tabla</a></li>
+            <li><a href="#">Accesorios</a></li>
+          </ul>
+        </li>
+
+        <!-- NOSOTROS (dropdown) -->
+        <li class="nav-item has-dropdown">
+          <a href="teampage.html" class="site-header__link">NOSOTROS</a>
+          <ul class="dropdown-menu">
+            <li><a href="teampage.html">Equipo</a></li>
+            <li><a href="#">Historia</a></li>
+          </ul>
+        </li>
+
+        <!-- LA CAUSA (enlace directo) -->
+        <li class="nav-item">
+          <a href="causa.html" class="site-header__link">LA CAUSA</a>
+        </li>
+
+        <!-- B2B (enlace directo) -->
+        <li class="nav-item">
+          <a href="b2b.html" class="site-header__link">B2B</a>
+        </li>
+
+      </ul>
+
+      <!-- Spacer -->
+      <div class="site-header__spacer"></div>
+
+    </nav>
+
+    <!-- Mobile bar -->
+    <div class="site-header__mobile-bar">
+      <img src="https://i.postimg.cc/zB0HwtrS/logo.png" alt="Lobitos Logo" class="site-header__mobile-logo">
+      <button class="site-header__mobile-btn" onclick="toggleMenu()" aria-label="Abrir menú">
+        <i data-lucide="menu"></i>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="site-header__mobile-menu">
+      <a href="collection-lobitos-ponchos.html">Productos</a>
+      <a href="teampage.html">Nosotros</a>
+      <a href="causa.html">La Causa</a>
+      <a href="b2b.html">B2B</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ========== PERSONALIZADOR DE PONCHO ========== -->
+    <div class="perso-page">
+      <div class="page">
+        <header class="masthead">
+          <div>
+            <div class="brand">Lobitos · Surf Ponchos</div>
+            <h1>Diséñalo a tu ola</h1>
+            <p class="sub">Personaliza las 4 partes del poncho y míralo cambiar en tiempo real sobre la foto real.</p>
+          </div>
+        </header>
+
+        <div class="layout">
+          <!-- PREVIEW -->
+          <div class="col-preview">
+            <div class="stage">
+              <div class="poncho" id="poncho">
+                <canvas id="pcv" width="1080" height="1080"></canvas>
+              </div>
+              <div class="stage-cap"><span class="live"></span>Vista previa en vivo · foto real</div>
+            </div>
+          </div>
+
+          <!-- CONTROLES -->
+          <div class="col-controls">
+            <div class="panel" id="controls">
+              <!-- ========== PESTAÑAS POR ZONA ========== -->
+              <div class="tabs" role="tablist" aria-label="Zona del poncho a personalizar">
+                <button type="button" class="tab" role="tab" id="tab-capucha" aria-selected="true"
+                  aria-controls="panel-capucha" data-zone="capucha" tabindex="0">
+                  <span class="tab-label">Capucha</span>
+                  <span class="tab-current" data-tab-current="capucha"></span>
+                </button>
+                <button type="button" class="tab" role="tab" id="tab-arriba" aria-selected="false"
+                  aria-controls="panel-arriba" data-zone="arriba" tabindex="-1">
+                  <span class="tab-label">Parte de arriba</span>
+                  <span class="tab-current" data-tab-current="arriba"></span>
+                </button>
+                <button type="button" class="tab" role="tab" id="tab-abajo" aria-selected="false"
+                  aria-controls="panel-abajo" data-zone="abajo" tabindex="-1">
+                  <span class="tab-label">Parte de abajo</span>
+                  <span class="tab-current" data-tab-current="abajo"></span>
+                </button>
+                <button type="button" class="tab" role="tab" id="tab-bolsillo" aria-selected="false"
+                  aria-controls="panel-bolsillo" data-zone="bolsillo" tabindex="-1">
+                  <span class="tab-label">Bolsillo</span>
+                  <span class="tab-current" data-tab-current="bolsillo"></span>
+                </button>
+              </div>
+
+              <!-- ========== GRID DE COLORES DE LA ZONA ACTIVA ========== -->
+              <div class="tabpanel" id="panel-capucha" role="tabpanel" aria-labelledby="tab-capucha" tabindex="0">
+                <div class="swatches" data-zone="capucha" id="swatches-capucha" role="radiogroup"
+                  aria-label="Color de la capucha"></div>
+                <button type="button" class="toggle-colors" data-zone="capucha" aria-expanded="false"
+                  aria-controls="swatches-capucha">Ver todos los colores (35)</button>
+              </div>
+              <div class="tabpanel" id="panel-arriba" role="tabpanel" aria-labelledby="tab-arriba" tabindex="0"
+                hidden>
+                <div class="swatches" data-zone="arriba" id="swatches-arriba" role="radiogroup"
+                  aria-label="Color de la parte de arriba"></div>
+                <button type="button" class="toggle-colors" data-zone="arriba" aria-expanded="false"
+                  aria-controls="swatches-arriba">Ver todos los colores (35)</button>
+              </div>
+              <div class="tabpanel" id="panel-abajo" role="tabpanel" aria-labelledby="tab-abajo" tabindex="0" hidden>
+                <div class="swatches" data-zone="abajo" id="swatches-abajo" role="radiogroup"
+                  aria-label="Color de la parte de abajo"></div>
+                <button type="button" class="toggle-colors" data-zone="abajo" aria-expanded="false"
+                  aria-controls="swatches-abajo">Ver todos los colores (35)</button>
+              </div>
+              <div class="tabpanel" id="panel-bolsillo" role="tabpanel" aria-labelledby="tab-bolsillo" tabindex="0"
+                hidden>
+                <div class="swatches" data-zone="bolsillo" id="swatches-bolsillo" role="radiogroup"
+                  aria-label="Color del bolsillo"></div>
+                <button type="button" class="toggle-colors" data-zone="bolsillo" aria-expanded="false"
+                  aria-controls="swatches-bolsillo">Ver todos los colores (35)</button>
+              </div>
+
+              <div class="divider"></div>
+              <div class="summary">
+                <div class="k">Tu combinación</div>
+                <p id="summary-text" aria-live="polite" aria-atomic="true"></p>
+              </div>
+              <button class="cta" id="cta">Añadir al carrito</button>
+              <p class="price">S/ 149.00 · Envío gratis desde S/ 200</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div class="site-footer__grid">
+        <div class="site-footer__brand">
+          <img src="https://i.postimg.cc/zB0HwtrS/logo.png" alt="Lobitos Logo" class="site-footer__brand-logo">
+          <p class="site-footer__brand-text">Ponchos que abrazan tradición. Tejidos que perduran.</p>
+          <div class="site-footer__social">
+            <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+            <a href="#" aria-label="Email"><i data-lucide="mail"></i></a>
+          </div>
+        </div>
+        <div>
+          <div class="site-footer__col-title">Colección</div>
+          <ul class="site-footer__col-list">
+            <li><a href="collection-lobitos-ponchos.html">Ponchos</a></li>
+            <li><a href="#">Kids</a></li>
+            <li><a href="#">Accesorios</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="site-footer__col-title">Nosotros</div>
+          <ul class="site-footer__col-list">
+            <li><a href="teampage.html">Equipo</a></li>
+            <li><a href="causa.html">Causa</a></li>
+            <li><a href="b2b.html">B2B</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="site-footer__bottom">
+        <div>© 2025 Lobitos Ponchos. Hecho en Perú.</div>
+        <div class="site-footer__bottom-links">
+          <a href="#">Privacidad</a>
+          <a href="#">Términos</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('site-header__mobile-menu--open');
+    }
+    lucide.createIcons();
+  </script>
+
+  <!-- ========== LÓGICA DEL PERSONALIZADOR ========== -->
+  <script>
+    (function () {
+      "use strict";
+      var VISIBLE_COUNT = 14; // con pestañas, solo se ve 1 zona a la vez: hay más espacio vertical para mostrar más de entrada
+
+      var state = {
+        capucha: { color: "#0B2EBC", name: "Azul eléctrico" },
+        arriba: { color: "#60D3B5", name: "Verde jade" },
+        abajo: { color: "#ED9868", name: "Capibara" },
+        bolsillo: { color: "#FDBE3E", name: "Amarillo" }
+      };
+
+      // Vista previa temporal (hover / foco de teclado) — nunca muta `state` hasta confirmar
+      var previewState = { capucha: null, arriba: null, abajo: null, bolsillo: null };
+
+      // Paleta completa compartida por las 4 zonas (35 colores, ya deduplicados)
+      var coloresDisponibles = {
+        verdejade: "#60D3B5", azulelectrico: "#0B2EBC", rosadopastel: "#F4B6C2",
+        rosadovintage: "#D97C96", azulpastel: "#5260C1", azulpastelclaro: "#6E8CE5",
+        azulmarino: "#1558E8", lila: "#D778EC", lilaclaro: "#B5A8DE",
+        fresa: "#FF538D", coral: "#FE879B", melon: "#EC8B88",
+        pink: "#C61F64", rojo: "#E10920", negro: "#000000",
+        negrografito: "#3B3E46", gris: "#BBB7AE", amarillo: "#FDBE3E",
+        amarillomostaza: "#C99606", amarillomango: "#FEB43B", amarillodorado: "#FFD700",
+        verdelimon: "#32CD32", verdelimonclaro: "#6CDD61", verde: "#23B468",
+        mostaza: "#FAA21E", verdeolivo: "#A5BDA7", capibara: "#ED9868",
+        turquesa: "#2DB2EA", turquesacielo: "#37C5D0", turquesaoceano: "#1CA3D7",
+        turquesaclasico: "#40E0D0", beige: "#DDBDA0", beigetostado: "#E7D0A6",
+        beigearena: "#DEB692", beigehueso: "#F5F5DC"
+      };
+      var NOMBRES = {
+        verdejade: "Verde jade", azulelectrico: "Azul eléctrico", rosadopastel: "Rosado pastel",
+        rosadovintage: "Rosado vintage", azulpastel: "Azul pastel", azulpastelclaro: "Azul pastel claro",
+        azulmarino: "Azul marino", lila: "Lila", lilaclaro: "Lila claro",
+        fresa: "Fresa", coral: "Coral", melon: "Melón",
+        pink: "Pink", rojo: "Rojo", negro: "Negro",
+        negrografito: "Negro grafito", gris: "Gris", amarillo: "Amarillo",
+        amarillomostaza: "Amarillo mostaza", amarillomango: "Amarillo mango", amarillodorado: "Amarillo dorado",
+        verdelimon: "Verde limón", verdelimonclaro: "Verde limón claro", verde: "Verde",
+        mostaza: "Mostaza", verdeolivo: "Verde olivo", capibara: "Capibara",
+        turquesa: "Turquesa", turquesacielo: "Turquesa cielo", turquesaoceano: "Turquesa océano",
+        turquesaclasico: "Turquesa clásico", beige: "Beige", beigetostado: "Beige tostado",
+        beigearena: "Beige arena", beigehueso: "Beige hueso"
+      };
+
+      // Colores muy claros: llevan borde propio para no perderse sobre el fondo blanco de la tarjeta
+      var LIGHT_KEYS = { gris: true, beigearena: true, beigehueso: true };
+      var COLOR_KEYS = Object.keys(coloresDisponibles);
+
+      function visibleSwatches(wrap) {
+        return Array.prototype.filter.call(wrap.querySelectorAll(".swatch"), function (sw) {
+          return sw.style.display !== "none";
+        });
+      }
+
+      // Roving tabindex: solo un swatch por zona es alcanzable con Tab (el seleccionado, o el primero visible)
+      function setRovingTabIndex(wrap, focusEl) {
+        var list = visibleSwatches(wrap);
+        var target = focusEl || list.filter(function (sw) { return sw.classList.contains("active"); })[0] || list[0];
+        list.forEach(function (sw) { sw.tabIndex = (sw === target) ? 0 : -1; });
+      }
+
+      // Genera los swatches (35 por zona) con roles ARIA de radiogroup/radio
+      document.querySelectorAll(".perso-page .swatches").forEach(function (wrap) {
+        var zone = wrap.getAttribute("data-zone");
+        COLOR_KEYS.forEach(function (key, i) {
+          var hex = coloresDisponibles[key];
+          var name = NOMBRES[key];
+          var b = document.createElement("button");
+          b.type = "button";
+          b.className = "swatch" + (LIGHT_KEYS[key] ? " swatch--light" : "");
+          b.style.backgroundColor = hex;
+          b.setAttribute("data-color", hex);
+          b.setAttribute("data-name", name);
+          b.setAttribute("role", "radio");
+          var isSelected = hex.toLowerCase() === state[zone].color.toLowerCase();
+          b.setAttribute("aria-checked", isSelected ? "true" : "false");
+          b.setAttribute("aria-label", name);
+          b.setAttribute("title", name);
+          b.tabIndex = -1;
+          // El color ya seleccionado siempre queda visible, aunque esté fuera del
+          // bloque colapsado de los primeros 10 — evita que el foco inicial caiga
+          // en un swatch distinto al realmente elegido.
+          if (i >= VISIBLE_COUNT && !isSelected) b.style.display = "none";
+          wrap.appendChild(b);
+        });
+      });
+
+      // Botones "Ver todos los colores" / "Ver menos" — independientes por zona
+      document.querySelectorAll(".perso-page .toggle-colors").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var zone = btn.getAttribute("data-zone");
+          var wrap = document.getElementById("swatches-" + zone);
+          var expanded = wrap.classList.toggle("expanded");
+          wrap.querySelectorAll(".swatch").forEach(function (sw, i) {
+            var keep = expanded || i < VISIBLE_COUNT || sw.classList.contains("active");
+            sw.style.display = keep ? "" : "none";
+          });
+          btn.setAttribute("aria-expanded", expanded ? "true" : "false");
+          btn.textContent = expanded ? "Ver menos colores" : "Ver todos los colores (" + COLOR_KEYS.length + ")";
+          setRovingTabIndex(wrap);
+          btn.focus();          // el foco nunca se pierde en la página al expandir/colapsar
+        });
+      });
+
+      // ---------- Pestañas por zona (patrón ARIA tabs, activación manual) ----------
+      var TABS = Array.prototype.slice.call(document.querySelectorAll(".perso-page .tab"));
+
+      function activateTab(tab, opts) {
+        var zone = tab.getAttribute("data-zone");
+        TABS.forEach(function (t) {
+          var selected = t === tab;
+          t.setAttribute("aria-selected", selected ? "true" : "false");
+          t.tabIndex = selected ? 0 : -1;
+          var panel = document.getElementById(t.getAttribute("aria-controls"));
+          panel.hidden = !selected;
+        });
+        if (!opts || opts.focus !== false) tab.focus();
+      }
+
+      TABS.forEach(function (tab) {
+        tab.addEventListener("click", function () { activateTab(tab); });
+      });
+
+      document.querySelector(".perso-page .tabs").addEventListener("keydown", function (e) {
+        var tab = e.target.closest(".tab"); if (!tab) return;
+        var idx = TABS.indexOf(tab);
+
+        if (e.key === "Enter" || e.key === " " || e.key === "Spacebar") {
+          e.preventDefault();
+          activateTab(tab);
+          return;
+        }
+
+        var moves = { ArrowRight: 1, ArrowLeft: -1 };
+        if (!(e.key in moves)) return;
+        e.preventDefault();
+        var next = TABS[(idx + moves[e.key] + TABS.length) % TABS.length];
+        // Las flechas solo MUEVEN el foco entre pestañas (activación manual);
+        // Enter/Espacio es lo que confirma el cambio de zona.
+        TABS.forEach(function (t) { t.tabIndex = (t === next) ? 0 : -1; });
+        next.focus();
+      });
+
+      var canvas = document.getElementById("pcv");
+      var ctx = canvas.getContext("2d");
+      var W = 1080, H = 1080;
+      var assets = {}, ready = false;
+
+      function hexRGB(hex) {
+        var n = hex.replace("#", "");
+        return [parseInt(n.slice(0, 2), 16), parseInt(n.slice(2, 4), 16), parseInt(n.slice(4, 6), 16)];
+      }
+
+      function grab(src) {
+        return new Promise(function (res) {
+          var img = new Image();
+          img.crossOrigin = "anonymous";
+          img.onload = function () {
+            var c = document.createElement("canvas"); c.width = W; c.height = H;
+            var x = c.getContext("2d"); x.drawImage(img, 0, 0, W, H);
+            res(x.getImageData(0, 0, W, H).data);
+          };
+          img.src = src;
+        });
+      }
+
+      // Orden de apilado (abajo -> arriba). Cada pieza es su propia textura + alfa.
+      var LAYERS = ["abajo", "arriba", "bolsillo", "capucha"];
+
+      Promise.all(LAYERS.map(function (k) { return grab("./images/personalizado/" + k + ".png"); }))
+        .then(function (r) {
+          LAYERS.forEach(function (k, i) { assets[k] = r[i]; });
+          ready = true; paint();
+        });
+
+      // Composita apilando las 4 piezas: color de zona x luminancia real de la tela, con su alfa.
+      // `previewState[zone]`, si existe, sobreescribe temporalmente el color de esa zona sin tocar `state`.
+      function paint() {
+        if (!ready) return;
+        var out = ctx.createImageData(W, H), o = out.data;
+        for (var k = 0; k < LAYERS.length; k++) {
+          var name = LAYERS[k];
+          var src = assets[name];
+          var active = previewState[name] || state[name];
+          var col = hexRGB(active.color);
+          for (var i = 0; i < o.length; i += 4) {
+            var a = i + 3, srcA = src[a];
+            if (srcA < 6) continue;                 // pixel transparente en esta pieza
+            // luminancia de la tela (conserva pliegues y sombras)
+            var lum = (0.299 * src[i] + 0.587 * src[i + 1] + 0.114 * src[i + 2]) / 255;
+            var r = col[0] * lum, g = col[1] * lum, b = col[2] * lum;
+            var af = srcA / 255;
+            // alpha-over sobre lo ya pintado
+            var dstA = o[a] / 255;
+            var outA = af + dstA * (1 - af);
+            if (outA <= 0) { o[a] = 0; continue; }
+            o[i] = (r * af + o[i] * dstA * (1 - af)) / outA;
+            o[i + 1] = (g * af + o[i + 1] * dstA * (1 - af)) / outA;
+            o[i + 2] = (b * af + o[i + 2] * dstA * (1 - af)) / outA;
+            o[a] = outA * 255;
+          }
+        }
+        ctx.putImageData(out, 0, 0);
+      }
+
+      // Refleja la selección CONFIRMADA (state) en el UI — anillo activo + aria-checked.
+      // No se llama durante el hover-preview.
+      function refreshUI(zone) {
+        var cur = document.querySelector('.perso-page [data-tab-current="' + zone + '"]');
+        if (cur) cur.textContent = state[zone].name;
+        var wrap = document.getElementById("swatches-" + zone);
+        if (wrap) {
+          wrap.querySelectorAll(".swatch").forEach(function (sw) {
+            var isActive = sw.getAttribute("data-color").toLowerCase() === state[zone].color.toLowerCase();
+            sw.classList.toggle("active", isActive);
+            sw.setAttribute("aria-checked", isActive ? "true" : "false");
+          });
+        }
+      }
+
+      // Anuncia la combinación real a lectores de pantalla (aria-live) — solo en cambios confirmados.
+      function announceSummary() {
+        document.getElementById("summary-text").textContent =
+          "Capucha: " + state.capucha.name + " · Arriba: " + state.arriba.name +
+          " · Abajo: " + state.abajo.name + " · Bolsillo: " + state.bolsillo.name;
+      }
+
+      function confirmSelection(sw) {
+        var wrap = sw.closest(".swatches"); if (!wrap) return;
+        var zone = wrap.getAttribute("data-zone");
+        previewState[zone] = null;
+        state[zone] = { color: sw.getAttribute("data-color"), name: sw.getAttribute("data-name") };
+        paint();
+        refreshUI(zone);
+        announceSummary();
+        setRovingTabIndex(wrap, sw);
+        var cta = document.getElementById("cta");
+        cta.classList.remove("added"); cta.textContent = "Añadir al carrito";
+      }
+
+      function previewSwatch(sw) {
+        var wrap = sw.closest(".swatches"); if (!wrap) return;
+        var zone = wrap.getAttribute("data-zone");
+        previewState[zone] = { color: sw.getAttribute("data-color"), name: sw.getAttribute("data-name") };
+        paint();
+        var cur = document.querySelector('.perso-page [data-tab-current="' + zone + '"]');
+        if (cur) cur.textContent = previewState[zone].name;
+      }
+
+      function clearPreview(sw) {
+        var wrap = sw.closest(".swatches"); if (!wrap) return;
+        var zone = wrap.getAttribute("data-zone");
+        previewState[zone] = null;
+        paint();
+        var cur = document.querySelector('.perso-page [data-tab-current="' + zone + '"]');
+        if (cur) cur.textContent = state[zone].name;
+      }
+
+      var controls = document.getElementById("controls");
+
+      // Confirmar selección: click
+      controls.addEventListener("click", function (e) {
+        var sw = e.target.closest(".swatch"); if (!sw) return;
+        confirmSelection(sw);
+      });
+
+      // Vista previa temporal: mouse
+      controls.addEventListener("mouseover", function (e) {
+        var sw = e.target.closest(".swatch"); if (!sw) return;
+        previewSwatch(sw);
+      });
+      controls.addEventListener("mouseout", function (e) {
+        var sw = e.target.closest(".swatch"); if (!sw) return;
+        clearPreview(sw);
+      });
+
+      // Vista previa temporal: foco de teclado (Tab / flechas)
+      controls.addEventListener("focusin", function (e) {
+        var sw = e.target.closest(".swatch"); if (!sw) return;
+        previewSwatch(sw);
+      });
+      controls.addEventListener("focusout", function (e) {
+        var sw = e.target.closest(".swatch"); if (!sw) return;
+        clearPreview(sw);
+      });
+
+      // Navegación por teclado dentro de cada radiogroup: flechas mueven el foco, Enter/Espacio confirma
+      controls.addEventListener("keydown", function (e) {
+        var sw = e.target.closest(".swatch"); if (!sw) return;
+        var wrap = sw.closest(".swatches"); if (!wrap) return;
+
+        if (e.key === "Enter" || e.key === " " || e.key === "Spacebar") {
+          e.preventDefault();
+          confirmSelection(sw);
+          return;
+        }
+
+        var moves = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 };
+        if (!(e.key in moves)) return;
+        e.preventDefault();
+
+        var list = visibleSwatches(wrap);
+        var idx = list.indexOf(sw);
+        var next = list[(idx + moves[e.key] + list.length) % list.length];
+        setRovingTabIndex(wrap, next);
+        next.focus();
+      });
+
+      var cartTimer;
+      document.getElementById("cta").addEventListener("click", function () {
+        this.classList.add("added"); this.textContent = "✓ Añadido al carrito";
+        var self = this; clearTimeout(cartTimer);
+        cartTimer = setTimeout(function () { self.classList.remove("added"); self.textContent = "Añadir al carrito"; }, 2200);
+      });
+
+      Object.keys(state).forEach(refreshUI);
+      announceSummary();
+      // Fija el roving tabindex inicial sobre el swatch realmente seleccionado (si es visible)
+      document.querySelectorAll(".perso-page .swatches").forEach(function (wrap) {
+        setRovingTabIndex(wrap);
+      });
+    })();
+  </script>
+
+</body>
+
+</html>
